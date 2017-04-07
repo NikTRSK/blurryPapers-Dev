@@ -1,0 +1,45 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" },
+  "articles": [
+    {
+      "title": "Robust principal component analysis?",
+      "authors": ["Emmanuel J. Candès "," Xiaodong Li "," Yi Ma ", " John Wright "],
+      "bibtexLink": "#",
+      "downloadLink": "#",
+      "abstractText": "..."
+    },
+    {
+      "title": "Robust principal component analysis?",
+      "authors": ["Emmanuel J. Candès "," Xiaodong Li "," Yi Ma ", " John Wright "],
+      "bibtexLink": "#",
+      "downloadLink": "#",
+      "abstractText": "..."
+    },
+    {
+      "title": "Robust principal component analysis?",
+      "authors": ["Emmanuel J. Candès ", " Xiaodong Li ", " Yi Ma ", " John Wright "],
+      "bibtexLink": "#",
+      "downloadLink": "#",
+      "abstractText": "..."
+    }
+  ],
+  "bibtex":{"bibtex":"@articleCandes:2011:RPC:1970392.1970395,\nauthor = Candes, Emmanuel J. and Li, Xiaodong and Ma, Yi and Wright, John,\ntitle = Robust Principal Component Analysis?, \njournal = J. ACM, \nissue_date = May 2011, \nvolume = 58, \nnumber = 3, \nmonth = un, \nyear = 2011, \nissn = 0004-5411, \npages = 11:1--11:37, \narticleno = 11, \nnumpages = 37, \nurl = http://doi.acm.org/10.1145/1970392.1970395,\ndoi = 10.1145/1970392.1970395, \nacmid = 1970395, \npublisher = ACM, \naddress = New York, NY, USA,"},
+  "wordmap": [
+      { "value": "what", "count": 5 },
+      { "value": "blurry", "count": 10 },
+      { "value": "papers", "count": 15 },
+      { "value": "JavaScript", "count": 38 },
+      { "value": "React", "count": 30 },
+      { "value": "Nodejs", "count": 28 },
+      { "value": "Express.js", "count": 25 },
+      { "value": "HTML5", "count": 33 },
+      { "value": "MongoDB", "count": 18 },
+      { "value": "CSS3", "count": 20 }
+  ]
+}
