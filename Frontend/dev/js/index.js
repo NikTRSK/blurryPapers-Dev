@@ -2,7 +2,6 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Homepage from './containers/homepage';
-import WordCloud from './containers/word-cloud';
 import ArticleList from './containers/article-list';
 
 // import css
@@ -14,6 +13,7 @@ import App from './components/App'
 import { Router, Route, IndexRoute } from 'react-router'
 
 import { Provider } from 'react-redux'
+
 import store, { history } from './store'
 
 const router = (

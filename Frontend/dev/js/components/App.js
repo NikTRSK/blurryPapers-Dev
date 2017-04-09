@@ -8,7 +8,8 @@ import Main from '../containers/main';
 function mapStateToProps(state) {
   return {
     paperData: state.paperData,
-    articleData: state.articles
+    articleData: state.articles,
+    searchHistory: state.searchHistory
   }
 }
 

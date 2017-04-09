@@ -1,0 +1,4 @@
+{
+  "/generateWordcloud/:query" : "/paperdata?query=:query",
+  "/getPapers/:word" : "/papers?word=:word"
+}

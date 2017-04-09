@@ -7,33 +7,38 @@ import {connect} from 'react-redux';
 
 const WordCloud = React.createClass ({
   render() {
-    return (
-      <div>
-        <div id="myModal" className="modal" ref="myModal">
-          <div className="modal-content">
-            <div className="modal-header">
-              <span className="close" id="closeModal" ref="closeModal">×</span>
+    if (this.props.paperData.length > 0) {
+      return (
+        <div>
+          <div id="myModal" className="modal" ref="myModal">
+            <div className="modal-content">
+              <div className="modal-header">
+                <span className="close" id="closeModal" ref="closeModal">×</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="word-cloud" id="word-cloud" ref="currentCloud">
-          <TagCloud minSize={8}
-                    maxSize={90}
-                    tags={this.props.paperData}
-                    onClick={
-                      (tag) => {
-                        this.props.getPapers(tag.value, tag.count);
+          <div className="word-cloud" id="word-cloud" ref="currentCloud">
+
+            <TagCloud minSize={8}
+                      maxSize={90}
+                      tags={this.props.paperData[0]}
+                      onClick={
+                        (tag) => {
+                          this.props.getPapers(tag.value, tag.count);
                           this.props.history.push({
                             pathname: `/paperlist/${tag.value}`
                           });
+                        }
                       }
-                    }
-          >
-          </TagCloud>
+            >
+            </TagCloud>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (<div/>)
+    }
   }
 });
 
