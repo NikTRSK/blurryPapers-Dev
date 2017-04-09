@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="PHPUnit" tests="29" assertions="30" errors="0" failures="0" skipped="0" time="13.589188">
+    <testsuite name="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" tests="14" assertions="15" errors="0" failures="0" skipped="0" time="9.536552">
+      <testcase name="testPaperClassConstructor" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="8" assertions="1" time="1.202516"/>
+      <testcase name="testGetPaperNameReturnsValidPaperName" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="22" assertions="1" time="0.614394"/>
+      <testcase name="testGetPaperNameReturnsInvalidPaperName" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="35" assertions="1" time="0.680063"/>
+      <testcase name="testSetPaperName" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="47" assertions="1" time="0.665688"/>
+      <testcase name="testGetAuthorNamesReturnsAuthorNames" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="63" assertions="2" time="0.649515"/>
+      <testcase name="testAddAuthorNameSingleAddReturnsSingleAuthor" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="77" assertions="1" time="0.677413"/>
+      <testcase name="testAddAuthorNameSingleToNullAddReturnsSingleAuthor" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="91" assertions="1" time="0.586523"/>
+      <testcase name="testAddAuthorNameMultipleAddReturnsMultipleAuthor" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="106" assertions="1" time="0.625566"/>
+      <testcase name="testAddAuthorNameNothingAddedReturnsEmpty" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="124" assertions="1" time="0.694857"/>
+      <testcase name="testGetPDFURLLinkReturnsValidPDFURLLink" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="137" assertions="1" time="0.612843"/>
+      <testcase name="testGetPDFURLLinkReturnsInvalidPDFURLink" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="149" assertions="1" time="0.651913"/>
+      <testcase name="testSetPDPURLLink" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="161" assertions="1" time="0.641054"/>
+      <testcase name="testGetAbstract" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="176" assertions="1" time="0.655512"/>
+      <testcase name="testSetAbstract" class="PaperClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/data/PaperClassUnitTest.php" line="188" assertions="1" time="0.578695"/>
+    </testsuite>
+    <testsuite name="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" tests="15" assertions="15" errors="0" failures="0" skipped="0" time="4.052636">
+      <testcase name="testDataStoreClassConstructor" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="8" assertions="1" time="0.004014"/>
+      <testcase name="testAddPaperWithValidPDFWordStringToFrequencyMapNotEmpty" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="15" assertions="1" time="0.282409"/>
+      <testcase name="testAddPaperWithValidPDFmWordStringToPapersListMapNotEmpty" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="33" assertions="1" time="0.287699"/>
+      <testcase name="testGetWordStringToFrequencyMapReturnsStringToFrequencyMap" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="64" assertions="1" time="0.310156"/>
+      <testcase name="testGetWordStringToPapersListMapReturnsWordStringToPapersListMap" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="84" assertions="1" time="0.288023"/>
+      <testcase name="testReturnMostFrequentWordsWithEqualToOrMoreThan200WordsInStore" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="104" assertions="1" time="0.288621"/>
+      <testcase name="testReturnMostFrequentWordsWithLessThan200WordsInStore" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="122" assertions="1" time="0.289689"/>
+      <testcase name="testReturnPapersListForWordValidWordReturnsPapersList" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="140" assertions="1" time="0.292364"/>
+      <testcase name="testReturnPapersListForWordInvalidWordReturnsNull" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="158" assertions="1" time="0.278755"/>
+      <testcase name="testReturnPDFURLValidWordAndValidPaperReturnsPDFURL" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="176" assertions="1" time="0.297555"/>
+      <testcase name="testReturnPDFURLInvalidWordAndValidPaperReturnsNull" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="194" assertions="1" time="0.283285"/>
+      <testcase name="testReturnAbstractValidWordAndValidPaperReturnsAbstract" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="211" assertions="1" time="0.281925"/>
+      <testcase name="testReturnAbstractInvalidWordAndValidPaperReturnsAbstract" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="229" assertions="1" time="0.294159"/>
+      <testcase name="testReturnAbstractValidWordAndInvalidPaperReturnsAbstract" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="247" assertions="1" time="0.287655"/>
+      <testcase name="testReturnAbstractInvalidWordAndInvalidPaperReturnsAbstract" class="DataStoreClassUnitTest" file="/Users/mabook/Documents/usc/CS310/310-Project2/Backend/tests/DataStoreClassUnitTest.php" line="265" assertions="1" time="0.286327"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
