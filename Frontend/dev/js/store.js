@@ -1,12 +1,9 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import axiosMiddleware from 'redux-axios-middleware'
 import logger from "redux-logger"
 import thunk from "redux-thunk"
-import axios from 'axios';
 import reduxpromise from 'redux-promise-middleware'
-import { composeWithDevTools } from 'remote-redux-devtools';
 
 // import the root reducer
 import rootReducer from './reducers/index'
@@ -15,7 +12,7 @@ import paperData from './data/paperData'
 import articleData from './data/articleData'
 
 // create an object for the default data
-const defaultState = { paperData: [], articleData, searchHistory: {} };
+const defaultState = { paperData: {}, articleData, searchHistory: {} };
 
 // enable Redux Dev Tools
 const enhancers = compose(

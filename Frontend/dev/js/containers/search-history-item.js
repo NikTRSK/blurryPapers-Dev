@@ -14,11 +14,13 @@ const SearchHistoryItem = React.createClass ({
     const {query, count} = this.props;
     return (
       <div>
-        <td className="searchItem">
-            <a onClick={(e) => this.handleClick(e, query, count)} className="song-result">
-              {query}
-            </a>
-        </td>
+        <tbody>
+          <td className="searchItem">
+              <a onClick={(e) => this.handleClick(e, query, count)} className="song-result">
+                {query}
+              </a>
+          </td>
+        </tbody>
       </div>
     );
   }
