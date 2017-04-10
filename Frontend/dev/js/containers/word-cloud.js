@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-// import {selectUser} from '../actions/index'
+import '../../styles/wordcloud.sass';
 
 const WordCloud = React.createClass ({
   render() {
@@ -25,7 +25,7 @@ const WordCloud = React.createClass ({
                       tags={this.props.paperData[0]}
                       onClick={
                         (tag) => {
-                          this.props.getPapers(tag.value, tag.count);
+                          {/*this.props.getPapers(tag.value, tag.count);*/}
                           this.props.history.push({
                             pathname: `/paperlist/${tag.value}`
                           });

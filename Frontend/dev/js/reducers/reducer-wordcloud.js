@@ -1,7 +1,3 @@
-import axios from "axios";
-
-const WC = 'GENERATE_WORDCLOUD';
-
 export default function wordcloud(state = [], action) {
   if (action.type === 'GENERATE_WORDCLOUD') {
     return [
