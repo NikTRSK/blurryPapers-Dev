@@ -45,11 +45,6 @@ class DataStoreClass
 	public function addWordStringToFrequencyMap($word)
 	{
 
-		
-		// $people = array("Peter", "Joe", "Glenn", "Cleveland");
-
-
-		// try 
 		{
 			if (array_key_exists($word, $this->mWordStringToFrequencyMap)) 
 			{
@@ -150,19 +145,6 @@ class DataStoreClass
 			return null;
 		}
 	}
-
-
-	// James - probably for internal use
-	// public function addWord($word)
-	// {
-	// 	$this->mWordStringToFrequencyMap[$word]++;
-	// 	// var_dump($mWordStringToFrequencyMap[$word]);
-	// }
-
-	// public function dump()
-	// {
-	// 	var_dump($this->mWordStringToFrequencyMap);
-	// }
 }
 
 ?>

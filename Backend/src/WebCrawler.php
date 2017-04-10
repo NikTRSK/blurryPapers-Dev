@@ -41,8 +41,8 @@
 			}
 			if ($this->mConfig == "ACM")
 			{
-				$url = "http://dl.acm.org/results.cfm?query=Halfond";
-
+				// $url = "http://dl.acm.org/results.cfm?query=Halfond";
+				// $url = "http://dl.acm.org/results.cfm?query=" . $url;
 				$this->mURL = $url;
 
 				$ch = curl_init();
@@ -71,6 +71,7 @@
 		function getPaperContent()
 		{
 			// echo $mConfig;
+			$paperList = array();
 			if ($this->mConfig == "IEEE")
 			{
 				// echo "HI THERE\n";
@@ -111,40 +112,30 @@
 					$urlQuery = $finder->query("./*[contains(@class, 'ft')]", $key)->item(0);
 					$urlQuery1 = $finder->query("./a", $urlQuery)->item(0)->getAttribute('href');
 					$href = "http://dl.acm.org/" . $urlQuery1;
-					// echo $href . "\n";
-
-					//Get Redirect URL
-					// $service_url = 'http://dl.acm.org/ft_gateway.cfm?id=1496657&ftid=615922&dwn=1&#URLTOKEN#';
 	
 				   $curl = curl_init($href);
-				   // $curl_post_data = array(
-				   //      "id" => 1101935,
-				   //      "ftid" => 338180,
-				   //      );
+	
 				   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				   // curl_setopt($curl, CURLOPT_POST, true);
-				   // curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
-				   
+
 				   $curl_response = curl_exec($curl);
 				   if (curl_errno($curl))
 				   {
 				   	echo "ERROR";
 				   }
 				   $redirect_url = curl_getinfo($curl);
-				   echo $redirect_url["redirect_url"];
+				   // echo $redirect_url["redirect_url"];
 				   curl_close($curl);
 
 				   $paper = new Paper($titleText, array(), $redirect_url["redirect_url"], $abstractText);
 
+				   array_push($paperList, $paper);
 
-					
-
-					// echo "..............................\n";
 				}
 			}
+			return $paperList;
+
 			
 		}
-
 
 	}
 
