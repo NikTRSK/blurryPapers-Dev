@@ -1,7 +1,7 @@
 export default function wordcloud(state = [], action) {
   if (action.type === 'GENERATE_WORDCLOUD') {
     return [
-      ...state,
+      // ...state,
       action.payload[0].paperData
     ];
   }

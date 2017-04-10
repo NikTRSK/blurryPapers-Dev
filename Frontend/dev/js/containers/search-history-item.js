@@ -4,10 +4,9 @@ import { Link, browserHistory } from 'react-router';
 import '../../styles/search-history.sass';
 
 const SearchHistoryItem = React.createClass ({
-  handleSubmit(e, searchQuery, count) {
+  handleClick(e, searchQuery, count) {
     e.preventDefault();
-    console.log("Word: " + searchQuery + ", Count: " + count);
-    // this.props.addToHistory(searchQuery, count);
+    console.log("In search|"+"Word: " + searchQuery + ", Count: " + count);
     this.props.generatePapers(searchQuery);
     this.setState({showDownloadButton: true});
   },
@@ -16,9 +15,9 @@ const SearchHistoryItem = React.createClass ({
     return (
       <div>
         <td className="searchItem">
-            <Link onClick={this.handleSubmit.bind(this, query, count)} className="song-result">
+            <a onClick={(e) => this.handleClick(e, query, count)} className="song-result">
               {query}
-            </Link>
+            </a>
         </td>
       </div>
     );

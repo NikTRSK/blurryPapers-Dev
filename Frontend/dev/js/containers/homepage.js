@@ -15,6 +15,7 @@ const homepage = React.createClass ({
     const searchQuery = this.refs.query.value;
     const count = this.refs.numArticles.value;
     console.log("Word: " + searchQuery + ", Count: " + count);
+    // this.props.paperData = [];
     this.props.addToHistory(searchQuery, count);
     this.props.generatePapers(searchQuery);
     this.setState({showDownloadButton: true});
