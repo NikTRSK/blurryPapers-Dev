@@ -38,7 +38,7 @@ const homepage = React.createClass ({
   render() {
     return (
       <div className="input-group center">
-        <div>
+        <div id="loading-bar" >
           <LoadingBar/>
         </div>
         {
