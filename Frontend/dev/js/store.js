@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import logger from "redux-logger"
 import thunk from "redux-thunk"
 import reduxpromise from 'redux-promise-middleware'
+import { loadingBarMiddleware } from 'react-redux-loading-bar'
 
 // import the root reducer
 import rootReducer from './reducers/index'
@@ -12,7 +13,7 @@ import paperData from './data/paperData'
 import articleData from './data/articleData'
 
 // create an object for the default data
-const defaultState = { paperData, articles: [{}], searchHistory: {}, bibtex: {bibtex:""}, abstract: {abstract:""} };
+const defaultState = { paperData : {}, articles: [{}], searchHistory: {}, bibtex: {bibtex:""}, abstract: {abstract:""} };
 
 // enable Redux Dev Tools
 const enhancers = compose(
@@ -27,15 +28,15 @@ const enhancers = compose(
 //   responseType: 'json'
 // });
 
-const middleware = applyMiddleware(/*
-                    axiosMiddleware(client),*/
+const middleware = applyMiddleware(
                     logger(),
                     thunk,
-                    reduxpromise());
+                    reduxpromise(),
+                    loadingBarMiddleware());
 
 const store = createStore(rootReducer,
-                          defaultState,
-                          compose(middleware, enhancers));
+  defaultState,
+  compose(middleware, enhancers));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

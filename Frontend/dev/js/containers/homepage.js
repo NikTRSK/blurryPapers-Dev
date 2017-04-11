@@ -3,7 +3,10 @@ import '../../styles/homepage.sass'
 import WordCloud from './word-cloud';
 import SearchHistory from './search-history';
 import html2canvas from 'html2canvas';
-import FileSaver from "file-saver";
+import LoadingBar from 'react-redux-loading-bar'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import {store, dispatch} from 'react-redux'
+
 
 const homepage = React.createClass ({
   getInitialState: () => {
@@ -17,6 +20,7 @@ const homepage = React.createClass ({
     const count = this.refs.numArticles.value;
     console.log("Word: " + searchQuery + ", Count: " + count);
     // this.props.paperData = [];
+    // store.dispatch(showLoading());
     this.props.addToHistory(searchQuery, count);
     this.props.generatePapers(searchQuery);
     this.setState({showDownloadButton: true});
@@ -26,8 +30,6 @@ const homepage = React.createClass ({
     const wordcoud = this.refs.wordcloud.refs.currentCloud;
     html2canvas(wordcoud, {
       onrendered: function (canvas) {
-        // Automagically saves canvas as png and downloads it
-        // canvas.toBlob((blob) => FileSaver.saveAs(blob, "word-cloud.png"));
         let img = canvas.toDataURL();
         window.open(img);
       }
@@ -36,6 +38,7 @@ const homepage = React.createClass ({
   render() {
     return (
       <div className="input-group center">
+        <LoadingBar/>
         {
           this.state.showDownloadButton ?
             <button id="download-image-button" className="btn btn-lg downloadButton"

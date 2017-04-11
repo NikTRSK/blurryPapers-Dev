@@ -3,12 +3,8 @@ import axios from "axios";
 
 export const generatePapers = (query) => {
   const request = axios.get("http://localhost:8888/generateWordcloud/" + query);
-  // console.log("Querying API");
-  // return {
-  //   type: 'GENERATE_WORDCLOUD',
-  //   query
-  // }
   return (dispatch) => {
+    // dispatch(showLoading());
     request.then(({data}) => {
       dispatch({
         type: "GENERATE_WORDCLOUD",
@@ -16,13 +12,6 @@ export const generatePapers = (query) => {
       })
     })
   };
-  // return {
-  //   type: 'GENERATE_WORDCLOUD',
-  //   payload: {
-  //     promise: callAPI(query)/*axios.get("http://localhost:8888/generateWordcloud/" + query)*/
-  // }
-
-  // }
 };
 
 
