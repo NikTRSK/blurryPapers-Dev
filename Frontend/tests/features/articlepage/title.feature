@@ -6,7 +6,7 @@ Feature: Title check
   Scenario: Get the title of webpage
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
-    When There is a "#word-cloud"
     When The "#search-button" is clicked
-    When I select a "tag.value" from the "#word-cloud"
-    Then I expect "#articles-title" to be the selected word from "#word-cloud"
+    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    Then I expect "#articles-title" to be the selected word from ".tag-cloud-tag"
+
