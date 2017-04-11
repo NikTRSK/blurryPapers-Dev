@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from "react-redux"
-import { fetchBibtex } from "../actions/actionCreators";
 import * as ReactBootstrap from 'react-bootstrap'
+import Highlight from 'react-highlighter';
 import '../../../dev/styles/article-item.sass';
 
 export default class ArticleItem extends React.Component {
@@ -9,18 +8,26 @@ export default class ArticleItem extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-			showAbstract: false
+			showAbstract: false,
+	    checked: false
     };
     this.openBibtex = this.openBibtex.bind(this);
     this.closeBibtex = this.closeBibtex.bind(this);
 		this.openAbstract = this.openAbstract.bind(this);
 		this.closeAbstract = this.closeAbstract.bind(this);
+		this.handleCheckbox = this.handleCheckbox.bind(this);
+		//this.toggleCheckbox = this.toggleCheckbox.bind(this);
+		//this.handleClick = this.handleClick.bind(this);
   }
 
   getInitialState() {
-    return { showModal: false };
+    return {
+	    showModal: false,
+	    showAbstract: false
+    };
   }
 	openAbstract() {
+		this.props.fetchAbstract();
 		this.setState({ showAbstract: true });
 	}
 	closeAbstract() {
@@ -30,11 +37,46 @@ export default class ArticleItem extends React.Component {
     this.setState({ showModal: false });
   }
   openBibtex() {
-		this.props.dispatch(fetchBibtex());
+	  this.props.fetchBibtex();
     this.setState({ showModal: true });
   }
+	handleCheckbox() {
+		//console.log(this.state.checked);
+		const checked = this.state.checked;
+		this.setState({checked: !checked});
+		//console.log(this.state.checked);
+		this.props.onChange(this.props.paper.doi, !checked);
+	}
+
+	//handleClick() {
+	//	//const { id } = this.props;
+	//	//const refString = `article-checkbox-${id}`;
+	//	//console.log("refs:\n" +this.refs);
+	//	console.log(this.props);
+	//	this.setState({checked: !this.state.checked});
+	//	//this.props.handleChange(this.state.checked);
+	//}
 	render() {
-		const { bibtex } = this.props;
+		const { authors, conferences, downloadLink, title, doi } = this.props.paper;
+		const { bibtex } = this.props.bibtexData.bibtex;
+		const { abstract } = this.props.abstractData.abstract;
+		const { word } = this.props;
+		//console.log("props: " + this.props);
+		//const refString = `article-checkbox-${id}`;
+		//console.log("refString = " +refString +"\n");
+
+		const mappedAuthors = authors.map((author, i) =>
+			<a href="#" key={i}>
+				{!!i && ", "}
+				{author}
+			</a>
+		);
+		const mappedConferences = conferences.map((conference, i) =>
+			<a href="#" key={i}>
+				{!!i && ", "}
+				{conference}
+			</a>
+		);
 
 		return (
       <div className="container" id="article-container">
@@ -43,12 +85,11 @@ export default class ArticleItem extends React.Component {
 				<div className="row">
 					<div>
 						<ReactBootstrap.Modal show={this.state.showModal} onHide={this.closeBibtex}>
-							<ReactBootstrap.Modal.Header closeButton className="bibtex-header">
+							<ReactBootstrap.Modal.Header closeButton>
 								<ReactBootstrap.Modal.Title>BibTeX</ReactBootstrap.Modal.Title>
 							</ReactBootstrap.Modal.Header>
-							<ReactBootstrap.Modal.Body className="bibtex-body">
-								<pre >{bibtex}
-								</pre>
+							<ReactBootstrap.Modal.Body>
+								<pre className="article-modal-pre">{bibtex}</pre>
 							</ReactBootstrap.Modal.Body>
 						</ReactBootstrap.Modal>
 					</div>
@@ -58,37 +99,46 @@ export default class ArticleItem extends React.Component {
 				<div className="row">
 					<div>
 						<ReactBootstrap.Modal show={this.state.showAbstract} onHide={this.closeAbstract}>
-							<ReactBootstrap.Modal.Header closeButton className="bibtex-header">
+							<ReactBootstrap.Modal.Header closeButton>
 								<ReactBootstrap.Modal.Title>Abstract</ReactBootstrap.Modal.Title>
 							</ReactBootstrap.Modal.Header>
-							<ReactBootstrap.Modal.Body className="bibtex-body">
-								<pre >"Abstract"
+							<ReactBootstrap.Modal.Body>
+								<pre className="article-modal-pre">
+									<Highlight search={word} matchStyle={{backgroundColor:"#ffd54f"}}>{abstract}</Highlight>
 								</pre>
 							</ReactBootstrap.Modal.Body>
 						</ReactBootstrap.Modal>
 					</div>
 				</div>
 
-				{/* Article Checkbox */}
+				{/* Article Checkbox + Title */}
 				<div className="row" id="article-title-container">
-					<input type="checkbox" value="" id="article-checkbox"/>
-					<a onClick={this.openAbstract}><p id="article-title">Robust principal component analysis?</p></a>
+					<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
+					<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
 				</div>
 
-				{/* Article Title */}
+				{/* Article Authors */}
 				<div className="row" id="article-authors-container">
-					<p id="article-authors"><a href="#">Emmanuel J. Candès</a>, <a href="#">Xiaodong Li</a>, <a href="#">Yi Ma</a>, <a href="#">John Wright</a></p>
+					<span id="article-authors">Authors: </span>
+					{mappedAuthors}
 				</div>
 
+				{/* Article Conferences */}
+				<div className="row" id="article-authors-container">
+					<span id="article-conferences">Conferences: </span>
+					{mappedConferences}
+				</div>
 
 				{/* Buttons */}
 				<div className="row" id="article-buttons-container">
 					<button className="btn btn-primary" id="article-bibtex-button" onClick={this.openBibtex}>
 						<span className="glyphicon glyphicon-book"></span> BibTeX
 					</button>
-					<button className="btn btn-primary" id="article-download-button">
-						<span className="glyphicon glyphicon-download"></span> Download
-					</button>
+					<a href={downloadLink}>
+						<button className="btn btn-primary" id="article-download-button">
+							<span className="glyphicon glyphicon-download"></span> Download
+						</button>
+					</a>
 				</div>
 			</div>
 		);
