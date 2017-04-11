@@ -8,5 +8,5 @@ Feature: Title check
     When I enter "Smith" in the "#search-input-box"
     When There is a "#word-cloud"
     When The "#search-button" is clicked
-#    When I select a "tag.value" from the "#word-cloud"
-#    Then I expect "#articles-title" to be the selected word from "#word-cloud"
+    When I select a "tag.value" from the "#word-cloud"
+    Then I expect "#articles-title" to be the selected word from "#word-cloud"
