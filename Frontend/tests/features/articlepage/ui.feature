@@ -8,9 +8,9 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When There is a "#word-cloud"
     When The "#search-button" is clicked
-#    When I select a word from the Word Cloud
-#    When I am on the author page
-#    Then I expect a list of Articles to display under the title
+    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    When I am on the author page
+    Then I expect a list of Articles to display under the title
 #
   #Test 3
   @javascript
@@ -19,7 +19,7 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When There is a "#word-cloud"
     When The "#search-button" is clicked
-#    When I select a word from the Word Cloud
+    When I select a ".tag-cloud-tag" from the "#word-cloud"
 #    When I am on the author page
 #    Then I expect the article component to list the authors
 #
@@ -30,7 +30,7 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When There is a "#word-cloud"
     When The "#search-button" is clicked
-#    When I select a word from the Word Cloud
+    When I select a ".tag-cloud-tag" from the "#word-cloud"
 #    When I am on the author page
 #    Then I expect to see a button allowing me to view the article's BibTex
 #
@@ -41,6 +41,6 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When There is a "#word-cloud"
     When The "#search-button" is clicked
-#    When I select a word from the Word Cloud
+    When I select a ".tag-cloud-tag" from the "#word-cloud"
 #    When I click on the Download button
 #    Then I expect a Download window to pop up
