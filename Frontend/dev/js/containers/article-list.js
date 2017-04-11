@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { fetchArticles } from "../actions/actionCreators";
 import '../../../dev/styles/article-list.sass';
 import FileSaver from "file-saver";
+import { Button,Glyphicon, MenuItem,ButtonToolbar, Dropdown } from "react-bootstrap";
 const jsPDF = require('jspdf');
 
 export default class ArticleList extends React.Component {
@@ -28,6 +29,23 @@ export default class ArticleList extends React.Component {
 		newState[doi] = value;
 		this.setState(newState);
 	}
+	/* Generates query for checked articles */
+	findChecked() {
+		console.log(this.state);
+		var doiQuery = ``;
+		var numArticles = 0;
+		const curState = this.state;
+		for (var key in curState) {
+			if (curState.hasOwnProperty(key)) {
+				if (curState[key] === true) {
+					numArticles += 1;
+					doiQuery += `${key} `
+				}
+			}
+		}
+		console.log(doiQuery);
+	}
+	/* Generates and saves a txt of the article list */
 	listToTXT() {
 		const { articles } = this.props.articleData;
 		const articleArray =	articles.map((article,i) => {
@@ -38,21 +56,7 @@ export default class ArticleList extends React.Component {
 		var blob = new Blob(articleArray, {type: "text/plain;charset=utf-8"});
 		FileSaver.saveAs(blob, "article-list.txt");
 	}
-
-	findChecked() {
-		console.log(this.state);
-		var doiQuery = ``;
-		const curState = this.state;
-		for (var key in curState) {
-			if (curState.hasOwnProperty(key)) {
-				if (curState[key] === true) {
-					doiQuery += `${key} `
-				}
-			}
-		}
-		console.log(doiQuery);
-	}
-
+	/* Generates and saves a pdf of the article list */
 	listToPDF() {
 		var doc = new jsPDF();
 		const { articles } = this.props.articleData;
@@ -84,6 +88,23 @@ export default class ArticleList extends React.Component {
 				<div className="row" id="articles-title-div">
 					<p id="articles-title">{word}</p>
 					<br/>
+				</div>
+
+				{/* Sorting Groups */}
+				<div className="row" id="articles-sorting-div">
+					<Dropdown id="dropdown-toolbar">
+						<Button id="dropdown-colors">
+							Sort By ...
+						</Button>
+						<Dropdown.Toggle bsStyle="success"/>
+						<Dropdown.Menu className="dropdown-style">
+							<MenuItem eventKey="1">Title</MenuItem>
+							<MenuItem eventKey="2">Authors</MenuItem>
+							<MenuItem eventKey="3">Conferences</MenuItem>
+							<MenuItem eventKey="4">Occurences</MenuItem>
+						</Dropdown.Menu>
+					</Dropdown>
+
 				</div>
 
 				{/*Article List*/}

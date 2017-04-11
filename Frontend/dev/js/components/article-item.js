@@ -16,8 +16,6 @@ export default class ArticleItem extends React.Component {
 		this.openAbstract = this.openAbstract.bind(this);
 		this.closeAbstract = this.closeAbstract.bind(this);
 		this.handleCheckbox = this.handleCheckbox.bind(this);
-		//this.toggleCheckbox = this.toggleCheckbox.bind(this);
-		//this.handleClick = this.handleClick.bind(this);
   }
 
   getInitialState() {
@@ -41,30 +39,16 @@ export default class ArticleItem extends React.Component {
     this.setState({ showModal: true });
   }
 	handleCheckbox() {
-		//console.log(this.state.checked);
 		const checked = this.state.checked;
 		this.setState({checked: !checked});
-		//console.log(this.state.checked);
 		this.props.onChange(this.props.paper.doi, !checked);
 	}
 
-	//handleClick() {
-	//	//const { id } = this.props;
-	//	//const refString = `article-checkbox-${id}`;
-	//	//console.log("refs:\n" +this.refs);
-	//	console.log(this.props);
-	//	this.setState({checked: !this.state.checked});
-	//	//this.props.handleChange(this.state.checked);
-	//}
 	render() {
 		const { authors, conferences, downloadLink, title, doi } = this.props.paper;
 		const { bibtex } = this.props.bibtexData.bibtex;
 		const { abstract } = this.props.abstractData.abstract;
 		const { word } = this.props;
-		//console.log("props: " + this.props);
-		//const refString = `article-checkbox-${id}`;
-		//console.log("refString = " +refString +"\n");
-
 		const mappedAuthors = authors.map((author, i) =>
 			<a href="#" key={i}>
 				{!!i && ", "}
@@ -116,6 +100,14 @@ export default class ArticleItem extends React.Component {
 					<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
 					<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
 				</div>
+
+	      {/* Word + Occurences */}
+	      <div className="row" id="article-authors-container">
+		      <span id="article-occurences-1">{word}: </span>
+		      <span id="article-occurences-2">Occurs </span>
+		      <span id="article-occurences-1">4 </span>
+		      <span id="article-occurences-2">times.</span>
+	      </div>
 
 				{/* Article Authors */}
 				<div className="row" id="article-authors-container">
