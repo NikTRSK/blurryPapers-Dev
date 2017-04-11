@@ -6,6 +6,7 @@ import html2canvas from 'html2canvas';
 import LoadingBar from 'react-redux-loading-bar'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import {store, dispatch} from 'react-redux'
+import FileSaver from 'file-saver';
 
 
 const homepage = React.createClass ({
@@ -19,19 +20,18 @@ const homepage = React.createClass ({
     const searchQuery = this.refs.query.value;
     const count = this.refs.numArticles.value;
     console.log("Word: " + searchQuery + ", Count: " + count);
-    // this.props.paperData = [];
-    // store.dispatch(showLoading());
     this.props.addToHistory(searchQuery, count);
     this.props.generatePapers(searchQuery);
-    // this.setState({showDownloadButton: true});
   },
   generateImage(e) {
     e.preventDefault();
     const wordcoud = this.refs.wordcloud.refs.currentCloud;
     html2canvas(wordcoud, {
-      onrendered: function (canvas) {
-        let img = canvas.toDataURL();
-        window.open(img);
+      onrendered: (canvas) => {
+        // Automagically saves canvas as png and downloads it
+        canvas.toBlob((blob) => FileSaver.saveAs(blob, "word-cloud.png"));
+        // let img = canvas.toDataURL();
+        // window.open(img);
       }
     })
   },
