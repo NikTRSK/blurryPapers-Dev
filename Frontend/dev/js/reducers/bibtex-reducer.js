@@ -1,10 +1,11 @@
 export default function reducer(state={}, action) {
 	switch (action.type) {
-		case "ARTICLES_RECEIVED":
+		case "BIBTEX_RECEIVED":
 		{
 			return {
 				...state,
-				articles: action.payload};
+				bibtex: action.payload
+			}
 		}
 	}
 	return state;

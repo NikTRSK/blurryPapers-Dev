@@ -1,5 +1,4 @@
 import axios from "axios";
-import articleData from "../data/articleData";
 // import 'redux-promise-middleware'
 
 export const generatePapers = (query) => {
@@ -37,22 +36,39 @@ export function getPapers(word, count) {
 }
 
 export function fetchArticles() {
-  return {
-    type: "FETCH_ARTICLES",
-    payload: articleData
+  return function(dispatch) {
+    axios.get("http://localhost:8888/articles")
+      .then((response) => {
+        dispatch({type: "ARTICLES_RECEIVED", payload: response.data})
+      })
+      .catch((err) => {
+        dispatch({type: "ARTICLES_REJECTED", payload: err})
+      })
   }
 }
 
 export function fetchBibtex() {
-  return function(dispatch) {
-    axios.get("http://localhost:8888/bibtex")
-      .then((response) => {
-        dispatch({type: "BIBTEX_RECEIVED", payload: response.data})
-      })
-      .catch((err) => {
-        dispatch({type: "FETCH_TWEETS_REJECTED", payload: err})
-      })
-  }
+	return function(dispatch) {
+		axios.get("http://localhost:8888/bibtex")
+			.then((response) => {
+				dispatch({type: "BIBTEX_RECEIVED", payload: response.data})
+			})
+			.catch((err) => {
+				dispatch({type: "BIBTEX_REJECTED", payload: err})
+			})
+	}
+}
+
+export function fetchAbstract() {
+	return function(dispatch) {
+		axios.get("http://localhost:8888/abstract")
+			.then((response) => {
+				dispatch({type: "ABSTRACT_RECEIVED", payload: response.data})
+			})
+			.catch((err) => {
+				dispatch({type: "ABSTRACT_REJECTED", payload: err})
+			})
+	}
 }
 
 export function addToHistory(query, count) {

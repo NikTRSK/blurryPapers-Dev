@@ -7,25 +7,37 @@
   padding-bottom: 2%
 
 #article-buttons-container
+  // text-align: center
   padding-left: 5%
+  padding-top: 2%
 
 #article-authors-container
   padding-left: 5%
   #article-authors
-    color: $article-author-color
-    font-size: 1em
+    color: $article-subtitle-color
+    font-size: 1.2em
+    font-weight: bold
+  #article-conferences
+    color: $article-subtitle-color
+    font-size: 1.2em
+    font-weight: bold
   a:link
     color: $article-author-color
-    font-size: 16px
+    font-size: 1.2em
   a:visited
     color: $article-author-color
-    font-size: 16px
+    font-size: 1.2em
   a:hover
     color: $article-author-color
-    font-size: 16px
+    font-size: 1.2em
   a:active
     color: $article-author-color
-    font-size: 16px
+    font-size: 1.2em
+
+.article-modal-pre
+  white-space: pre-wrap       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap  /* Mozilla, since 1999 */
+  word-wrap: break-word       /* Internet Explorer 5.5+ */
 
 // Elements
 #article-title
@@ -39,6 +51,15 @@
   height: 15px
   width: 15px
   vertical-align: 30%
+
+#article-occurences-2
+  color: $article-author-color
+  font-size: 1.2em
+
+#article-occurences-1
+  color: $article-subtitle-color
+  font-size: 1.2em
+  font-weight: bold
 
 #article-authors
   color: $article-author-color

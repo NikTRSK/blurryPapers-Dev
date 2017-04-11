@@ -12,7 +12,7 @@ import paperData from './data/paperData'
 import articleData from './data/articleData'
 
 // create an object for the default data
-const defaultState = { paperData: {}, articleData, searchHistory: {} };
+const defaultState = { paperData, articles: [{}], searchHistory: {}, bibtex: {bibtex:""}, abstract: {abstract:""} };
 
 // enable Redux Dev Tools
 const enhancers = compose(

@@ -9,6 +9,8 @@ function mapStateToProps(state) {
   return {
     paperData: state.paperData,
     articleData: state.articles,
+	  bibtexData: state.bibtex,
+	  abstractData: state.abstract,
     searchHistory: state.searchHistory
   }
 }
