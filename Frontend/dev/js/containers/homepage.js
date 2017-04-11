@@ -26,9 +26,10 @@ const homepage = React.createClass ({
     const wordcoud = this.refs.wordcloud.refs.currentCloud;
     html2canvas(wordcoud, {
       onrendered: function (canvas) {
-        canvas.toBlob((blob) => FileSaver.saveAs(blob, "word-cloud.png"));
-        // let img = canvas.toDataURL();
-        // window.open(img);
+        // Automagically saves canvas as png and downloads it
+        // canvas.toBlob((blob) => FileSaver.saveAs(blob, "word-cloud.png"));
+        let img = canvas.toDataURL();
+        window.open(img);
       }
     })
   },
