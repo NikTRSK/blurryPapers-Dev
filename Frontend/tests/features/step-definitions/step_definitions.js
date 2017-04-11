@@ -72,7 +72,7 @@ const searchBarTests = function () {
        expect(btn.getText()).to.eq('Download List as TXT');
    });
    
-   this.Then(/^I expect to see a "([^"]*)" download button with the text "([^"]*)"$/,(element, text)=> {
+   this.Then(/^I expect to see a "([^"]*)" download button with the text "([^"]*)"$/,(element, text) => {
         let btn = $(element);
         expect(btn.state).to.eq('success');
         expect(btn.getText()).to.eq('Download List as PDF');
@@ -81,12 +81,46 @@ const searchBarTests = function () {
   // title.feature
 
 
-  this.Then(/^I expect "([^"]*)" to be the selected word from "([^"]*)"$/, function (element, word) {
+  this.Then(/^I expect "([^"]*)" to be the selected word from "([^"]*)"$/, (element, word) => {
       let title = $(element);
       expect(title.state).to.eq('success');
       expect(title.getText()).to.eq($(word).getValue());
   });
+/* New stuff */
+  // download_button
+  this.Then(/^I expect a "([^"]*)" with the text "([^"]*)" to exist$/, (element, word) => {
+    expect(null).to.not.equal(null); // TODO
+  });
 
+  this.When(/^There exists a wordcloud$/, () => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^Clicking the "([^"]*)" opens an image in a new tab$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  // history
+  this.Then(/^I expect a "([^"]*)"$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.When(/^I click on a search history item$/, () => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^The word cloud is regenerated$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  // progress bar
+  this.Then(/^There isn't a "([^"]*)"$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^There is a "([^"]*)"$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
 };
 
 module.exports = searchBarTests;

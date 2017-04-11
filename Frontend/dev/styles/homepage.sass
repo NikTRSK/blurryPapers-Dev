@@ -1,9 +1,15 @@
-$button-color: #653CE0
+@import variables
+
+$purple: #653CE0
 $button-text-color: white
 $coup-gray: #2A363B
+$baby-blue: #32ffff
 
 body
   background-color: $coup-gray
+
+html *
+  font-family: $default-font
 
 .center
   display: flex
@@ -13,12 +19,24 @@ body
   margin: auto
 
 .searchButton
-  background-color: $button-color
+  background-color: $purple
   color: $button-text-color
   padding: 10px
   margin-top: 10px
   font-weight: bold
   width: 150px
+  justify-content: right
+  font-family: $default-font
+
+.downloadButton
+  background-color: $baby-blue
+  color: black
+  padding: 5px
+  margin-top: 5px
+  font-weight: bold
+  width: 180px
+  align-self: flex-end
+  font-family: $default-font
 
 .searchBox
   width: 150px
@@ -32,3 +50,10 @@ body
 
 #search-numitems-box
   width: 50px
+
+.searchHistory
+  align-self: flex-start
+  padding: 5px
+  margin-top: 5px
+  font-weight: bold
+  //width: 200px

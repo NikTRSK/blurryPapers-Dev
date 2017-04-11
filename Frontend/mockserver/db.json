@@ -58,6 +58,31 @@
       "paperData" : [
         { "value" : "you", "count" : 100 }
       ]
+    },
+    {
+      "query" : "Smith",
+      "paperData" : [
+        { "value" : "unknown", "count" : 166 },
+        { "value" : "blot", "count" : 102 },
+        { "value" : "onerous", "count" : 206 },
+        { "value" : "order", "count" : 130 },
+        { "value" : "exultant", "count" : 32 },
+        { "value" : "shame", "count" : 201 },
+        { "value" : "present", "count" : 214 },
+        { "value" : "birthday", "count" : 223 },
+        { "value" : "crooked", "count" : 118 },
+        { "value" : "horrible", "count" : 232 },
+        { "value" : "makeshift", "count" : 69 },
+        { "value" : "cows", "count" : 73 },
+        { "value" : "sink", "count" : 122 },
+        { "value" : "seed", "count" : 236 },
+        { "value" : "screw", "count" : 94 },
+        { "value" : "thirsty", "count" : 161 },
+        { "value" : "statuesque", "count" : 13 },
+        { "value" : "nail", "count" : 125 },
+        { "value" : "left", "count" : 152 },
+        { "value" : "pin", "count" : 178 }
+      ]
     }
   ]
 }

@@ -4,7 +4,7 @@ export default function searchHistory(state = [], action) {
     return [...state,
     {
       query: action.query,
-      value: action.value
+      count: action.count
     }]
   }
   return state;
