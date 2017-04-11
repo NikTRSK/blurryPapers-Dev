@@ -23,7 +23,7 @@ const homepage = React.createClass ({
     // store.dispatch(showLoading());
     this.props.addToHistory(searchQuery, count);
     this.props.generatePapers(searchQuery);
-    this.setState({showDownloadButton: true});
+    // this.setState({showDownloadButton: true});
   },
   generateImage(e) {
     e.preventDefault();
@@ -38,9 +38,11 @@ const homepage = React.createClass ({
   render() {
     return (
       <div className="input-group center">
-        <LoadingBar/>
+        <div>
+          <LoadingBar/>
+        </div>
         {
-          this.state.showDownloadButton ?
+          (this.props.paperData.length !== 0) ?
             <button id="download-image-button" className="btn btn-lg downloadButton"
                     onClick={this.generateImage}>Download Image
             </button> : null
