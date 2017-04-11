@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9afa18ff-4dbf-4708-a042-e8aeba2a780e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/articlepage/download_button.feature" afterPath="$PROJECT_DIR$/Frontend/tests/features/articlepage/download_button.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/articlepage/selection.feature" afterPath="$PROJECT_DIR$/Frontend/tests/features/articlepage/selection.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/articlepage/title.feature" afterPath="$PROJECT_DIR$/Frontend/tests/features/articlepage/title.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/articlepage/ui.feature" afterPath="$PROJECT_DIR$/Frontend/tests/features/articlepage/ui.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/articlepage/view_abstract.feature" afterPath="$PROJECT_DIR$/Frontend/tests/features/articlepage/view_abstract.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/tests/features/step-definitions/step_definitions.js" afterPath="$PROJECT_DIR$/Frontend/tests/features/step-definitions/step_definitions.js" />
-    </list>
+    <list default="true" id="9afa18ff-4dbf-4708-a042-e8aeba2a780e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -76,8 +68,8 @@
       <file leaf-file-name="step_definitions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Frontend/tests/features/step-definitions/step_definitions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1845">
-              <caret line="123" column="32" lean-forward="false" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -361,12 +353,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491869813097</updated>
       <workItem from="1491869814214" duration="3511000" />
-      <workItem from="1491888323804" duration="93000" />
+      <workItem from="1491888323804" duration="296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3604000" />
+    <option name="totallyTimeSpent" value="3807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="28" y="22" width="1412" height="878" extended-state="0" />
@@ -504,8 +496,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/tests/features/step-definitions/step_definitions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1845">
-          <caret line="123" column="32" lean-forward="false" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
