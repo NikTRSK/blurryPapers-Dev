@@ -90,6 +90,11 @@ export default class ArticleItem extends React.Component {
 								<pre className="article-modal-pre">
 									<Highlight search={word} matchStyle={{backgroundColor:"#ffd54f"}}>{abstract}</Highlight>
 								</pre>
+								<a target="_blank" href={downloadLink}>
+									<button className="btn btn-primary" id="article-download-button">
+										<span className="glyphicon glyphicon-download"></span> Download
+									</button>
+								</a>
 							</ReactBootstrap.Modal.Body>
 						</ReactBootstrap.Modal>
 					</div>
@@ -126,7 +131,7 @@ export default class ArticleItem extends React.Component {
 					<button className="btn btn-primary" id="article-bibtex-button" onClick={this.openBibtex}>
 						<span className="glyphicon glyphicon-book"></span> BibTeX
 					</button>
-					<a href={downloadLink}>
+					<a target="_blank" href={downloadLink}>
 						<button className="btn btn-primary" id="article-download-button">
 							<span className="glyphicon glyphicon-download"></span> Download
 						</button>

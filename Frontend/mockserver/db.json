@@ -10,23 +10,23 @@
     {
       "title": "Robust principal component analysis?",
       "authors": ["Emmanuel J. Candès "," Xiaodong Li "," Yi Ma ", " John Wright "],
-      "downloadLink": "#",
+      "downloadLink": "http://dl.acm.org/ft_gateway.cfm?id=1970395&ftid=981070&dwn=1&CFID=922797698&CFTOKEN=61229705",
       "conferences": ["Conference1","Conference2","Conference3"],
-      "doi": "1234"
+      "doi": "10.1145/1970392.1970395"
     },
     {
-      "title": "Robust principal component analysis?",
-      "authors": ["Emmanuel J. Candès "," Xiaodong Li "," Yi Ma ", " John Wright "],
-      "downloadLink": "#",
-      "conferences": ["Conference1","Conference2","Conference3"],
-      "doi": "4321"
+      "title": "Integer Programming Formulation of Traveling Salesman Problems",
+      "authors": ["C.E. Miller", "A.W. Tucker", "R.A. Zemlin"],
+      "downloadLink": "http://dl.acm.org/ft_gateway.cfm?id=321046&ftid=417&dwn=1&CFID=922797698&CFTOKEN=61229705",
+      "conferences": ["Conference1","Conference2"],
+      "doi": "10.1145/321043.321046"
     },
     {
-      "title": "Robust principal component analysis?",
-      "authors": ["Emmanuel J. Candès ", " Xiaodong Li ", " Yi Ma ", " John Wright "],
-      "downloadLink": "#",
-      "conferences": ["Conference1","Conference2","Conference3"],
-      "doi": "5555"
+      "title": "Scheduling Algorithms for Multiprogramming in a Hard-Real-Time Environment",
+      "authors": ["C.L. Liu", "James W. Layland"],
+      "downloadLink": "http://dl.acm.org/ft_gateway.cfm?id=321743&ftid=58479&dwn=1&CFID=922797698&CFTOKEN=61229705",
+      "conferences": ["Conference2"],
+      "doi": "10.1145/321738.321743"
     }
   ],
   "bibtex":

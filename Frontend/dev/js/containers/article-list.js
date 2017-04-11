@@ -75,7 +75,11 @@ export default class ArticleList extends React.Component {
 		doc.save('article-list.pdf');
 	}
 	render() {
-		const { articles } = this.props.articleData;
+		let articles = [];
+		if (this.props.articleData.articles) {
+			articles = this.props.articleData.articles;
+		}
+		//const { articles } = this.props.articleData;
 		const { word } = this.props.params;
 		const { fetchAbstract, abstractData, fetchBibtex, bibtexData } = this.props;
 		const mappedArticles = articles.map((article,i) =>
