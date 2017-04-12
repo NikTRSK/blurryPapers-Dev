@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const searchBarTests = function () {
+const seleniumTests = function () {
 
     this.Given(/^I am on the homepage "([^"]*)"$/, (url) => {
         browser.url(url);
@@ -168,4 +168,4 @@ const searchBarTests = function () {
   });
 };
 
-module.exports = searchBarTests;
+module.exports = seleniumTests;
