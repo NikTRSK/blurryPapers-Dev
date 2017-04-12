@@ -1,28 +1,18 @@
 import axios from "axios";
-// import 'redux-promise-middleware'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const generatePapers = (query) => {
   const request = axios.get("http://localhost:8888/generateWordcloud/" + query);
-  // console.log("Querying API");
-  // return {
-  //   type: 'GENERATE_WORDCLOUD',
-  //   query
-  // }
   return (dispatch) => {
-    request.then(({data}) => {
-      dispatch({
-        type: "GENERATE_WORDCLOUD",
-        payload: data
+    dispatch(showLoading());
+    request
+      .then((response) => {
+        dispatch({type: "GENERATE_WORDCLOUD_FULFILLED", payload: response.data})
       })
-    })
+      .catch((err) => {
+        dispatch({type: "GENERATE_WORDCLOUD_REJECTED", payload: err})
+      })
   };
-  // return {
-  //   type: 'GENERATE_WORDCLOUD',
-  //   payload: {
-  //     promise: callAPI(query)/*axios.get("http://localhost:8888/generateWordcloud/" + query)*/
-  // }
-
-  // }
 };
 
 
