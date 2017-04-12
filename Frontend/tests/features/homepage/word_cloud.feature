@@ -10,5 +10,5 @@ Feature: Word Cloud check
   Scenario: When I am on the homepage and I search for something there is a word cloud
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
-    When I click on "#search-button"
+    When The "#search-button" is clicked
     Then There is a "#word-cloud"
