@@ -7,7 +7,7 @@ const SearchHistory = React.createClass ({
   render() {
     if (this.props.searchHistory.length > 0) {
       return (
-        <div className="search-history">
+        <div id="search-history" className="searchHistory">
           <h2 id="search-list-title" className="searchListTitle">Search History</h2>
           {
             this.props.searchHistory.map((item) => {
