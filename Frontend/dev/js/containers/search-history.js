@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link, browserHistory } from 'react-router';
 import SearchHistoryItem from './search-history-item';
 
 import '../../styles/search-history.sass';
@@ -12,7 +11,6 @@ const SearchHistory = React.createClass ({
           <h2 id="search-list-title" className="searchListTitle">Search History</h2>
           {
             this.props.searchHistory.map((item) => {
-              console.log(item);
               return (
                 <SearchHistoryItem {...this.props} key={item.query} query={item.query} count={item.count}/>
               )
