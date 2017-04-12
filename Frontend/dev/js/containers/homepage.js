@@ -9,11 +9,6 @@ import FileSaver from 'file-saver';
 
 
 const homepage = React.createClass ({
-  getInitialState: () => {
-    return {
-      showDownloadButton: false
-    }
-  },
   handleSubmit(e) {
     e.preventDefault();
     const searchQuery = this.refs.query.value;

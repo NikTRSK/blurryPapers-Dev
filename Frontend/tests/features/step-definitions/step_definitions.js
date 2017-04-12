@@ -130,6 +130,27 @@ const searchBarTests = function () {
     this.Then(/^I expect a "([^"]*)" to show me the progress$/, (element) => {
         expect(null).to.not.equal(null); // TODO
     });
+
+    // num items box
+  this.Then(/^I expect there to be a "([^"]*)" for the number of items$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.When(/^I enter nothing in the number of items box "([^"]*)"$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^The number items box "([^"]*)" is empty$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.When(/^I enter "([^"]*)" in the number of items box "([^"]*)"$/, (count, element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^The "([^"]*)" shows "([^"]*)"$/, (element, count) => {
+    expect(null).to.not.equal(null); // TODO
+  });
 };
 
 module.exports = searchBarTests;
