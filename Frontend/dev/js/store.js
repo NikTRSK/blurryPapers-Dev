@@ -11,10 +11,7 @@ import rootReducer from './reducers/index'
 
 // create an object for the default data
 const defaultState = { paperData : [],
-                       articles: [{}],
-                       searchHistory: {},
-                       bibtex: {bibtex:""},
-                       abstract: {abstract:""} };
+                       searchHistory: {}};
 
 // enable Redux Dev Tools
 const enhancers = compose(

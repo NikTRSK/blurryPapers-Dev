@@ -17,21 +17,16 @@ export default class ArticleItem extends React.Component {
 		this.closeAbstract = this.closeAbstract.bind(this);
 		this.handleCheckbox = this.handleCheckbox.bind(this);
   }
-
-  getInitialState() {
-    return {
-	    showModal: false,
-	    showAbstract: false
-    };
-  }
 	openAbstract() {
 		this.props.fetchAbstract();
 		this.setState({ showAbstract: true });
 	}
 	closeAbstract() {
+		this.props.clearAbstract();
 		this.setState({ showAbstract: false });
 	}
   closeBibtex() {
+	  this.props.clearBibtex();
     this.setState({ showModal: false });
   }
   openBibtex() {
@@ -41,11 +36,11 @@ export default class ArticleItem extends React.Component {
 	handleCheckbox() {
 		const checked = this.state.checked;
 		this.setState({checked: !checked});
-		this.props.onChange(this.props.paper.doi, !checked);
+		this.props.onChange(this.props.article.doi, !checked);
 	}
 
 	render() {
-		const { authors, conferences, downloadLink, title, doi } = this.props.paper;
+		const { authors, conferences, downloadLink, title, doi } = this.props.article;
 		const { bibtex } = this.props.bibtexData.bibtex;
 		const { abstract } = this.props.abstractData.abstract;
 		const { word } = this.props;
@@ -103,7 +98,9 @@ export default class ArticleItem extends React.Component {
 				{/* Article Checkbox + Title */}
 				<div className="row" id="article-title-container">
 					<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
-					<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
+					<div id="test-div">
+						<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
+					</div>
 				</div>
 
 	      {/* Word + Occurences */}

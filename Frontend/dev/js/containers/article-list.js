@@ -79,11 +79,11 @@ export default class ArticleList extends React.Component {
 		if (this.props.articleData.articles) {
 			articles = this.props.articleData.articles;
 		}
-		//const { articles } = this.props.articleData;
 		const { word } = this.props.params;
-		const { fetchAbstract, abstractData, fetchBibtex, bibtexData } = this.props;
 		const mappedArticles = articles.map((article,i) =>
-			<li><ArticleItem key={i} onChange={this.checkArticle.bind(this)} paper={article} word={word} abstractData={abstractData} fetchAbstract={fetchAbstract} bibtexData={bibtexData} fetchBibtex={fetchBibtex}/></li>
+			<li>
+				<ArticleItem {...this.props} key={article.title+i} word={word} onChange={this.checkArticle.bind(this)} article={article}/>
+			</li>
 		);
 		return (
 			<div className="container" id="articles-div">

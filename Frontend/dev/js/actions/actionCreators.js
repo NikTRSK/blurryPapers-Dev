@@ -37,6 +37,12 @@ export function fetchArticles() {
   }
 }
 
+export function clearArticles() {
+	return function(dispatch) {
+		dispatch({type: "ARTICLES_CLEAR", payload: []})
+	}
+}
+
 export function fetchBibtex() {
 	return function(dispatch) {
 		axios.get("http://localhost:8888/bibtex")
@@ -49,6 +55,12 @@ export function fetchBibtex() {
 	}
 }
 
+export function clearBibtex() {
+	return function(dispatch) {
+		dispatch({type: "BIBTEX_CLEAR", payload: {bibtex:""}})
+	}
+}
+
 export function fetchAbstract() {
 	return function(dispatch) {
 		axios.get("http://localhost:8888/abstract")
@@ -58,6 +70,12 @@ export function fetchAbstract() {
 			.catch((err) => {
 				dispatch({type: "ABSTRACT_REJECTED", payload: err})
 			})
+	}
+}
+
+export function clearAbstract() {
+	return function(dispatch) {
+		dispatch({type: "ABSTRACT_CLEAR", payload: {abstract:""}})
 	}
 }
 
