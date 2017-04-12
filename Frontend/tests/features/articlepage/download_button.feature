@@ -9,6 +9,7 @@ Feature: Buttons to download the list of selected articles
     When The "#search-button" is clicked
     When I select a ".tag-cloud-tag" from the "#word-cloud"
     Then I expect to see a "#articles-dl-txt-button" download button with the text "Download List as TXT"
+
   #Test 9
   @javascript
   Scenario: Check for Download PDF button
