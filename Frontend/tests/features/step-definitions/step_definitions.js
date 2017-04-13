@@ -63,7 +63,7 @@ const seleniumTests = function () {
         expect(null).to.equal(null);
     });
 
-    //download_button.feature
+    //download_image_button.feature
     this.When(/^The "([^"]*)" is clicked$/, function (element, callback) { //when the search button is clicked
         let myButton = $(element);
         myButton.click();
@@ -149,75 +149,81 @@ const seleniumTests = function () {
         }
     });
 
+  /* New stuff */
+  // download_button
+  this.Then(/^I expect a download button "([^"]*)" with the text "([^"]*)" to not exist$/, (element, word) => {
+    let downloadBtn = $(element);
+    expect(downloadBtn.state).to.equal("failure");
+  });
+  this.Then(/^I expect a download button "([^"]*)" with the text "([^"]*)" to exist$/, (element, word) => {
+    browser.pause(5500);
+    let downloadBtn = $(element);
+    expect(downloadBtn.state).to.equal("success");
+    expect(downloadBtn.getText()).to.equal(word);
+  });
 
-    /* New stuff */
-    // download_button
-    this.Then(/^I expect a "([^"]*)" with the text "([^"]*)" to not exist$/, (element, word) => {
-        expect(null).to.not.equal(null); // TODO
-    });
-    this.Then(/^I expect a "([^"]*)" with the text "([^"]*)" to exist$/, (element, word) => {
-        expect(null).to.not.equal(null); // TODO
-    });
+  this.Then(/^Clicking the "([^"]*)" opens a download link$/, (element) => {
+    browser.pause(7000);
+    let downloadBtn = $(element);
+    downloadBtn.click();
+    expect(downloadBtn.state).to.equal("success");
+  });
 
-    this.Then(/^Clicking the "([^"]*)" opens an image in a new tab$/, (element) => {
-        expect(null).to.not.equal(null); // TODO
-    });
+  // history
+  this.Then(/^I expect a "([^"]*)" with the history$/, (element) => {
+    history = $(element);
+    expect(history.state).to.eq('success');
+  });
 
-    // history
-    this.Then(/^I expect a "([^"]*)" with the history$/, (element) => {
-      history = $(element);
-      expect(history.state).to.eq('success');
-    });
+  this.When(/^I click on a search history item$/, () => {
+    let historyItems = $$("#search-history-item");
 
-    this.When(/^I click on a search history item$/, () => {
-      let historyItems = $$("#search-history-item");
-
-      for (let i = 0; i < historyItems.length; ++i) {
-        if (historyItems[i].getText() === "Smith") {
-          historyItems[i].click;
-          break;
-        }
+    for (let i = 0; i < historyItems.length; ++i) {
+      if (historyItems[i].getText() === "Smith") {
+        historyItems[i].click;
+        break;
       }
-    });
+    }
+  });
 
-    this.Then(/^The word cloud is regenerated$/, (element) => {
-      let wordCloud = $("#word-cloud");
-      console.log(wordCloud);
-      expect(wordCloud.state).to.equal("success");
-    });
+  this.Then(/^The word cloud is regenerated$/, (element) => {
+    browser.pause(7000);
+    let wordCloud = $("#word-cloud");
+    expect(wordCloud.state).to.equal("success");
+  });
 
-    // progress bar
-    this.When(/^The search bar is empty$/,  (element) => {
-        expect(null).to.not.equal(null); // TODO
-    });
-
-    this.Then(/^There isn't a "([^"]*)"$/, (element) => {
-        expect(null).to.not.equal(null); // TODO
-    });
-
-    this.Then(/^I expect a "([^"]*)" to show me the progress$/, (element) => {
-        expect(null).to.not.equal(null); // TODO
-    });
-
-    // num items box
-  this.Then(/^I expect there to be a "([^"]*)" for the number of items$/, (element) => {
+  // progress bar
+  this.When(/^The search bar is empty$/,  (element) => {
     expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^There isn't a "([^"]*)"$/, (element) => {
+    expect($(element).state).to.equal("failure");
+  });
+
+  this.Then(/^I expect a progress bar "([^"]*)" to show me the progress$/, (element) => {
+    expect($(element).getCssProperty('opacity').value).to.equal(1);
+  });
+
+  // num items box
+  this.Then(/^I expect there to be a "([^"]*)" for the number of items$/, (element) => {
+    expect($(element).state).to.equal("success");
   });
 
   this.When(/^I enter nothing in the number of items box "([^"]*)"$/, (element) => {
-    expect(null).to.not.equal(null); // TODO
+    $(element).setValue("");
   });
 
   this.Then(/^The number items box "([^"]*)" is empty$/, (element) => {
-    expect(null).to.not.equal(null); // TODO
+    expect($(element).getValue()).to.equal("");
   });
 
   this.When(/^I enter "([^"]*)" in the number of items box "([^"]*)"$/, (count, element) => {
-    expect(null).to.not.equal(null); // TODO
+    $(element).setValue(count);
   });
 
-  this.Then(/^The "([^"]*)" shows "([^"]*)"$/, (element, count) => {
-    expect(null).to.not.equal(null); // TODO
+  this.Then(/^I expect the number of items box "([^"]*)" to show "([^"]*)"$/, (element, count) => {
+    expect($(element).getValue()).to.equal(count);
   });
 };
 

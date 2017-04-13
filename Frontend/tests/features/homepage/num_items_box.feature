@@ -16,4 +16,4 @@ Feature: Number of items input box check
   Scenario: I am allowed to search for a researcher's last name
     Given I am on the homepage "http://localhost:3000"
     When I enter "5" in the number of items box "#search-numitems-box"
-    Then The "#search-numitems-box" shows "5"
+    Then I expect the number of items box "#search-numitems-box" to show "5"

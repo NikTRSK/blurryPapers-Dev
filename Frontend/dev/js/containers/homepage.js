@@ -13,7 +13,6 @@ const homepage = React.createClass ({
     e.preventDefault();
     const searchQuery = this.refs.query.value;
     const count = this.refs.numArticles.value;
-    console.log("Word: " + searchQuery + ", Count: " + count);
     this.props.addToHistory(searchQuery, count);
     this.props.generatePapers(searchQuery);
   },
@@ -29,51 +28,35 @@ const homepage = React.createClass ({
   },
   render() {
     return (
-	    <div className="container">
-	      <div className="input-group center">
+      <div className="input-group center">
+        <div id="progress-bar">
+          <LoadingBar/>
+        </div>
+        {
+          (this.props.paperData.length !== 0) ?
+            <button id="download-image-button" className="btn btn-lg downloadButton"
+                    onClick={this.generateImage}>Download Image
+            </button> : null
+        }
+        <WordCloud ref="wordcloud" {...this.props} />
+        <div className="input-group serchInput">
+          <input id="search-input-box" type="text" className="form-control"
+                 placeholder="Search artists..." ref="query"
+          >
+          </input>
 
-	        <div id="loading-bar" >
-	          <LoadingBar/>
-	        </div>
-
-		      <div className="row">
-		        <WordCloud ref="wordcloud" {...this.props} />
-	        </div>
-
-		      <div className="row">
-			      <div className="input-group serchInput">
-		          <input id="search-input-box" type="text" className="form-control"
-		                 placeholder="Search articles..." ref="query">
-		          </input>
-
-		          <input id="search-numitems-box" type="text" className="form-control"
-		                 placeholder="Count..." ref="numArticles">
-		          </input>
-	          </div>
-		      </div>
-
-		      <div className="row">
-		        <button id="search-button" className="btn btn-lg searchButton"
-		                onClick={this.handleSubmit}>
-		              <span className="glyphicon glyphicon-search" aria-hidden="true">
-		              </span> Search
-		        </button>
-			      {
-				      (this.props.paperData.length !== 0) ?
-					      <button id="download-image-button" className="btn btn-lg downloadButton"
-					              onClick={this.generateImage}>
-						      <span className="glyphicon glyphicon-download" aria-hidden="true">
-		              </span> Download Image
-					      </button> : null
-			      }
-		      </div>
-
-					<div className="row">
-	          <SearchHistory className="searchHistory" {...this.props}/>
-					</div>
-
-	      </div>
-	    </div>
+          <input id="search-numitems-box" type="text" className="form-control"
+                 placeholder="Count..." ref="numArticles"
+          >
+          </input>
+        </div>
+        <button id="search-button" className="btn btn-lg searchButton"
+                onClick={this.handleSubmit}>
+              <span className="glyphicon glyphicon-search" aria-hidden="true">
+              </span> Search
+        </button>
+        <SearchHistory className="searchHistory" {...this.props}/>
+      </div>
     );
   }
 });
