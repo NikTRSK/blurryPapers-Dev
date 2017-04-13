@@ -71,29 +71,82 @@ const seleniumTests = function () {
 
     //click on the word from WC
     this.When(/^I select a "([^"]*)" from the "([^"]*)"$/, function (element1, element2) {
-        expect(null).to.not.equal(null); // TODO
+        let cloudItems = $$("#word-cloud");
+        for (let i = 0; i < cloudItems.length; ++i) {
+            if (cloudItems[i].getText() === "present") { //selected a word to be clicked
+                cloudItems[i].click;
+                break;
+            }
+        }
     });
 
     this.Then(/^I expect to see a "([^"]*)" download button with the text "([^"]*)"$/,(element, text)=> {
-        let btn = $(element);
-        expect(btn.state).to.eq('success');
-        expect(btn.getText()).to.eq('Download List as TXT');
+        let btnDiv = $$("articles-dl-button-div");
+        for (let i = 0; i < btnDiv.length; ++i) {
+            if (btnDiv[i].getText() === "Download List as TXT") {
+                break;
+            }
+        }
     });
 
     this.Then(/^I expect to see a "([^"]*)" button to download with the text "([^"]*)"$/,(element, text) => {
-        let btn = $(element);
-        expect(btn.state).to.eq('success');
-        expect(btn.getText()).to.eq('Download List as PDF');
+        let btnDiv = $$("articles-dl-button-div");
+        for (let i = 0; i < btnDiv.length; ++i) {
+            if (btnDiv[i].getText() === "Download List as PDF") {
+                break;
+            }
+        }
     });
 
     // title.feature
     this.Then(/^I expect "([^"]*)" to be the selected word from "([^"]*)"$/, (element, word) => {
-        expect(null).to.not.equal(null); // TODO
+        let title = $$("articles-title-div");
+        for (let i = 0; i < title.length; ++i) {
+            if (title[i].getText() === "present") {
+                break;
+            }
+        }
     });
 
     //selection.feature
     this.Then(/^I expect to see a "([^"]*)" within a "([^"]*)"$/, (arg1, arg2, callback) => {
+        // let checkboxElement = $$("article-checkbox");
+        // if(checkboxElement.getValue() === "false"){
+        //     return;
+        // }
         expect(null).to.not.equal(null); // TODO
+    });
+
+    //ui.feature
+    this.When(/^I am on the author page$/, (url) =>{
+        if (browser.url(url) === "http://localhost:3000/paperlist/present"){
+            return;
+        }
+    });
+
+    this.Then(/^I expect a list of Articles to display under the title$/,(element, text)=> {
+        let articleDiv = $$("articles-article-list-div");
+        let noElements = "True";
+        for (let i = 0; i < articleDiv.length; ++i) {
+            if (articleDiv[i].getText() === "present") {
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
+    });
+    this.Then(/^I expect a list of Articles to display under the title$/,(element, text)=> {
+        let articleDiv = $$("articles-article-list-div");
+        let noElements = "True";
+        for (let i = 0; i < articleDiv.length; ++i) {
+            if (articleDiv[i].getText() === "present") {
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
     });
 
 

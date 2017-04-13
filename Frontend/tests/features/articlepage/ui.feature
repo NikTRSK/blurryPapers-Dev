@@ -7,7 +7,7 @@ Feature: Article Item Components check
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
-    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    When I select a "present" from the "#word-cloud"
     When I am on the author page
     Then I expect a list of Articles to display under the title
 
