@@ -43,7 +43,7 @@ const homepage = React.createClass ({
 		      <div className="row">
 			      <div className="input-group serchInput">
 		          <input id="search-input-box" type="text" className="form-control"
-		                 placeholder="Search artists..." ref="query">
+		                 placeholder="Search articles..." ref="query">
 		          </input>
 
 		          <input id="search-numitems-box" type="text" className="form-control"
