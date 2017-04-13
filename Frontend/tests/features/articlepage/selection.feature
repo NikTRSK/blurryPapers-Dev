@@ -10,3 +10,4 @@ Feature: The ability to select articles from the articles page
     When I select a ".tag-cloud-tag" from the "#word-cloud"
     Then I expect to see a "#article-checkbox" within a "#article-title-container"
 
+#
