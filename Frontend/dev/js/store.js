@@ -20,12 +20,6 @@ const enhancers = compose(
     : f => f
 );
 
-
-// const client = axios.create({
-//   baseURL: 'http://localhost:8888',
-//   responseType: 'json'
-// });
-
 const middleware = applyMiddleware(
                     logger(),
                     thunk,

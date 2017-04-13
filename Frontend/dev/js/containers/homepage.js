@@ -4,17 +4,11 @@ import WordCloud from './word-cloud';
 import SearchHistory from './search-history';
 import html2canvas from 'html2canvas';
 import LoadingBar from 'react-redux-loading-bar'
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import {store, dispatch} from 'react-redux'
 import FileSaver from 'file-saver';
 
 
 const homepage = React.createClass ({
-  getInitialState: () => {
-    return {
-      showDownloadButton: false
-    }
-  },
   handleSubmit(e) {
     e.preventDefault();
     const searchQuery = this.refs.query.value;
@@ -30,8 +24,6 @@ const homepage = React.createClass ({
       onrendered: (canvas) => {
         // Automagically saves canvas as png and downloads it
         canvas.toBlob((blob) => FileSaver.saveAs(blob, "word-cloud.png"));
-        // let img = canvas.toDataURL();
-        // window.open(img);
       }
     })
   },

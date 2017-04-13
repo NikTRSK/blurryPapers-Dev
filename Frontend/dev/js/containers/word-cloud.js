@@ -1,8 +1,5 @@
 import { TagCloud } from "react-tagcloud";
 import React, {Component} from 'react';
-import { Link } from 'react-router'
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 import '../../styles/wordcloud.sass';
 
 const WordCloud = React.createClass ({
@@ -18,14 +15,13 @@ const WordCloud = React.createClass ({
             </div>
           </div>
 
-          <div className="word-cloud" id="word-cloud" ref="currentCloud">
+          <div id="word-cloud" ref="currentCloud">
 
             <TagCloud minSize={8}
                       maxSize={90}
                       tags={this.props.paperData[0]}
                       onClick={
                         (tag) => {
-                          {/*this.props.getPapers(tag.value, tag.count);*/}
                           this.props.history.push({
                             pathname: `/paperlist/${tag.value}`
                           });
@@ -42,12 +38,4 @@ const WordCloud = React.createClass ({
   }
 });
 
-// Get actions and pass them as props to to UserList
-//      > now UserList has this.props.selectUser
-// function matchDispatchToProps(dispatch){
-//   return bindActionCreators({selectUser: selectUser}, dispatch);
-// }
-
-// We don't want to return the plain UserList (component) anymore, we want to return the smart Container
-//      > UserList is now aware of state and actions
 export default WordCloud;

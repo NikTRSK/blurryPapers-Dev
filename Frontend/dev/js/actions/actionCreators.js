@@ -15,16 +15,6 @@ export const generatePapers = (query) => {
   };
 };
 
-
-export function getPapers(word, count) {
-  console.log("GETTING PAPERS: " + word + ", " + count);
-  return {
-    type: 'GET_PAPERS',
-    word,
-    count
-  }
-}
-
 export function fetchArticles() {
   return function(dispatch) {
     axios.get("http://localhost:8888/articles")

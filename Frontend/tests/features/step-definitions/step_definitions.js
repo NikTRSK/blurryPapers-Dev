@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const searchBarTests = function () {
+const seleniumTests = function () {
 
     this.Given(/^I am on the homepage "([^"]*)"$/, (url) => {
         browser.url(url);
@@ -49,6 +49,11 @@ const searchBarTests = function () {
 
     this.When(/^There is a wordcloud$/, function (callback) {
         expect(null).to.equal(null);
+        let inputBox = $("#search-input-box");
+        inputBox.setValue("Smith");
+
+        let searchBtn = $("#search-button");
+        searchBtn.click();
     });
 
     this.Then(/^There is a "([^"]*)"$/, (element) => {
@@ -107,15 +112,25 @@ const searchBarTests = function () {
 
     // history
     this.Then(/^I expect a "([^"]*)" with the history$/, (element) => {
-        expect(null).to.not.equal(null); // TODO
+      history = $(element);
+      expect(history.state).to.eq('success');
     });
 
     this.When(/^I click on a search history item$/, () => {
-        expect(null).to.not.equal(null); // TODO
+      let historyItems = $$("#search-history-item");
+
+      for (let i = 0; i < historyItems.length; ++i) {
+        if (historyItems[i].getText() === "Smith") {
+          historyItems[i].click;
+          break;
+        }
+      }
     });
 
     this.Then(/^The word cloud is regenerated$/, (element) => {
-        expect(null).to.not.equal(null); // TODO
+      let wordCloud = $("#word-cloud");
+      console.log(wordCloud);
+      expect(wordCloud.state).to.equal("success");
     });
 
     // progress bar
@@ -130,6 +145,27 @@ const searchBarTests = function () {
     this.Then(/^I expect a "([^"]*)" to show me the progress$/, (element) => {
         expect(null).to.not.equal(null); // TODO
     });
+
+    // num items box
+  this.Then(/^I expect there to be a "([^"]*)" for the number of items$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.When(/^I enter nothing in the number of items box "([^"]*)"$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^The number items box "([^"]*)" is empty$/, (element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.When(/^I enter "([^"]*)" in the number of items box "([^"]*)"$/, (count, element) => {
+    expect(null).to.not.equal(null); // TODO
+  });
+
+  this.Then(/^The "([^"]*)" shows "([^"]*)"$/, (element, count) => {
+    expect(null).to.not.equal(null); // TODO
+  });
 };
 
-module.exports = searchBarTests;
+module.exports = seleniumTests;

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import { Link, browserHistory } from 'react-router';
 
 import '../../styles/search-history.sass';
 
 const SearchHistoryItem = React.createClass ({
   handleClick(e, searchQuery, count) {
     e.preventDefault();
-    console.log("In search|"+"Word: " + searchQuery + ", Count: " + count);
+    // console.log("In search|"+"Word: " + searchQuery + ", Count: " + count);
     this.props.generatePapers(searchQuery);
     this.setState({showDownloadButton: true});
   },
@@ -15,8 +14,8 @@ const SearchHistoryItem = React.createClass ({
     return (
       <div>
         <tbody>
-          <td className="searchItem">
-              <a onClick={(e) => this.handleClick(e, query, count)} className="song-result">
+          <td id="search-history-item" key={query+count} className="searchItem">
+              <a onClick={(e) => this.handleClick(e, query, count)}>
                 {query}
               </a>
           </td>
