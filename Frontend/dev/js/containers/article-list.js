@@ -5,19 +5,25 @@ import { bindActionCreators } from 'redux';
 import { fetchArticles } from "../actions/actionCreators";
 import '../../../dev/styles/article-list.sass';
 import FileSaver from "file-saver";
-import { Button,Glyphicon, MenuItem,ButtonToolbar, Dropdown } from "react-bootstrap";
+import { Button, Glyphicon, MenuItem, ButtonToolbar, Dropdown } from "react-bootstrap";
 const jsPDF = require('jspdf');
 
 export default class ArticleList extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			sortType: 0
+		};
 		this.listToPDF = this.listToPDF.bind(this);
 		this.listToTXT = this.listToTXT.bind(this);
-		this.findChecked = this.findChecked.bind(this);
+		this.sortedArticles = this.sortedArticles.bind(this);
+		this.generateWCFromSelected = this.generateWCFromSelected.bind(this);
 	}
+
 	componentWillMount() {
 		this.props.fetchArticles();
 	}
+
 	/*
 	* This function is passed to each article and is called when their checkbox if checked.
 	* It adds a key-value pair to ArticleList's state (key=article doi, value=checkbox status)
@@ -29,8 +35,9 @@ export default class ArticleList extends React.Component {
 		newState[doi] = value;
 		this.setState(newState);
 	}
+
 	/* Generates query for checked articles */
-	findChecked() {
+	generateWCFromSelected() {
 		console.log(this.state);
 		var doiQuery = ``;
 		var numArticles = 0;
@@ -43,8 +50,37 @@ export default class ArticleList extends React.Component {
 				}
 			}
 		}
+		console.log("PROPS IN GEN WC");
+		console.log(this.props);
+		console.log(this.refs);
 		console.log(doiQuery);
+		//this.props.history.push({
+		//	pathname: `/`
+		//});
+		//this.props.addToHistory(doiQuery, count);
+		//this.props.generatePapers(doiQuery);
+		//this.setState({showDownloadButton: true});
+		//console.log(doiQuery);
 	}
+
+	sortedArticles() {
+		let articles = [];
+		if (this.props.articleData.articles) {
+			articles = this.props.articleData.articles;
+		}
+		switch (this.state.sortType) {
+			case 0:
+				return [...articles].sort((a,b) => a.title > b.title);
+			case 1:
+				return [...articles].sort((a,b) => a.authors[0] > b.authors[0]);
+			case 2:
+				return [...articles].sort((a,b) => a.conferences[0] > b.conferences[0]);
+			case 3:
+				return [...articles].sort((a,b) => a.frequency < b.frequency);
+		}
+		return [];
+	}
+
 	/* Generates and saves a txt of the article list */
 	listToTXT() {
 		const { articles } = this.props.articleData;
@@ -56,6 +92,7 @@ export default class ArticleList extends React.Component {
 		var blob = new Blob(articleArray, {type: "text/plain;charset=utf-8"});
 		FileSaver.saveAs(blob, "article-list.txt");
 	}
+
 	/* Generates and saves a pdf of the article list */
 	listToPDF() {
 		var doc = new jsPDF();
@@ -74,12 +111,10 @@ export default class ArticleList extends React.Component {
 		});
 		doc.save('article-list.pdf');
 	}
+
 	render() {
-		let articles = [];
-		if (this.props.articleData.articles) {
-			articles = this.props.articleData.articles;
-		}
 		const { word } = this.props.params;
+		const articles = this.sortedArticles();
 		const mappedArticles = articles.map((article,i) =>
 			<li>
 				<ArticleItem {...this.props} key={article.title+i} word={word} onChange={this.checkArticle.bind(this)} article={article}/>
@@ -102,13 +137,12 @@ export default class ArticleList extends React.Component {
 						</Button>
 						<Dropdown.Toggle bsStyle="success"/>
 						<Dropdown.Menu className="dropdown-style">
-							<MenuItem eventKey="1">Title</MenuItem>
-							<MenuItem eventKey="2">Authors</MenuItem>
-							<MenuItem eventKey="3">Conferences</MenuItem>
-							<MenuItem eventKey="4">Occurences</MenuItem>
+							<MenuItem eventKey="1" onClick={() => this.setState({sortType: 0})}>Title</MenuItem>
+							<MenuItem eventKey="2" onClick={() => this.setState({sortType: 1})}>Authors</MenuItem>
+							<MenuItem eventKey="3" onClick={() => this.setState({sortType: 2})}>Conferences</MenuItem>
+							<MenuItem eventKey="4" onClick={() => this.setState({sortType: 3})}>Occurences</MenuItem>
 						</Dropdown.Menu>
 					</Dropdown>
-
 				</div>
 
 				{/*Article List*/}
@@ -120,7 +154,7 @@ export default class ArticleList extends React.Component {
 
 				{/*Word CLoud Button*/}
 				<div className="row" id="articles-generate-wc-button-div">
-					<button className="btn btn-primary" id="articles-generate-button" onClick={this.findChecked}>
+					<button className="btn btn-primary" id="articles-generate-button" onClick={this.generateWCFromSelected}>
 						<span className="glyphicon glyphicon-cloud"></span> Generate Word Cloud From Selected Articles
 					</button>
 				</div>

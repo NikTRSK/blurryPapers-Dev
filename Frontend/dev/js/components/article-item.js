@@ -40,7 +40,7 @@ export default class ArticleItem extends React.Component {
 	}
 
 	render() {
-		const { authors, conferences, downloadLink, title, doi } = this.props.article;
+		const { authors, conferences, downloadLink, title, doi, frequency } = this.props.article;
 		const { bibtex } = this.props.bibtexData.bibtex;
 		const { abstract } = this.props.abstractData.abstract;
 		const { word } = this.props;
@@ -97,17 +97,28 @@ export default class ArticleItem extends React.Component {
 
 				{/* Article Checkbox + Title */}
 				<div className="row" id="article-title-container">
-					<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
-					<div id="test-div">
-						<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
-					</div>
+					<table>
+						<tr>
+							<th className="article-checkbox-col">
+								<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
+							</th>
+							<th className="article-title-col">
+								<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
+							</th>
+						</tr>
+					</table>
 				</div>
+
+	      {/*<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
+	      <div id="test-div">
+		      <a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
+	      </div>*/}
 
 	      {/* Word + Occurences */}
 	      <div className="row" id="article-authors-container">
 		      <span id="article-occurences-1">{word}: </span>
 		      <span id="article-occurences-2">Occurs </span>
-		      <span id="article-occurences-1">4 </span>
+		      <span id="article-occurences-1">{frequency} </span>
 		      <span id="article-occurences-2">times.</span>
 	      </div>
 
