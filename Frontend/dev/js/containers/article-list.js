@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { fetchArticles } from "../actions/actionCreators";
 import '../../../dev/styles/article-list.sass';
 import FileSaver from "file-saver";
+import { IndexLink } from "react-router";
 import { Button, Glyphicon, MenuItem, ButtonToolbar, Dropdown } from "react-bootstrap";
 const jsPDF = require('jspdf');
 
@@ -14,12 +15,10 @@ export default class ArticleList extends React.Component {
 		this.state = {
 			sortType: 0
 		};
-		this.listToPDF = this.listToPDF.bind(this);
-		this.listToTXT = this.listToTXT.bind(this);
-		this.sortedArticles = this.sortedArticles.bind(this);
-		this.generateWCFromSelected = this.generateWCFromSelected.bind(this);
 	}
 
+	/* Automatically fetch articles */
+	// TODO: Rewrite fetch articles to take parameter and use as query parameter.
 	componentWillMount() {
 		this.props.fetchArticles();
 	}
@@ -37,6 +36,7 @@ export default class ArticleList extends React.Component {
 	}
 
 	/* Generates query for checked articles */
+	// TODO: Replace Smith w/ doiquery
 	generateWCFromSelected() {
 		console.log(this.state);
 		var doiQuery = ``;
@@ -50,19 +50,19 @@ export default class ArticleList extends React.Component {
 				}
 			}
 		}
-		console.log("PROPS IN GEN WC");
-		console.log(this.props);
-		console.log(this.refs);
-		console.log(doiQuery);
-		//this.props.history.push({
-		//	pathname: `/`
-		//});
-		//this.props.addToHistory(doiQuery, count);
+		this.props.addToHistory("Smith", numArticles);
+		this.props.generatePapers("Smith");
+		//this.props.addToHistory(doiQuery, numArticles);
 		//this.props.generatePapers(doiQuery);
-		//this.setState({showDownloadButton: true});
-		//console.log(doiQuery);
 	}
 
+	/*
+	* Returns articles list sorted depending on the current state of sort type.
+	* 0: Title
+	* 1: Author
+	* 2: Conference
+	* 3: Frequency
+	* */
 	sortedArticles() {
 		let articles = [];
 		if (this.props.articleData.articles) {
@@ -154,17 +154,19 @@ export default class ArticleList extends React.Component {
 
 				{/*Word CLoud Button*/}
 				<div className="row" id="articles-generate-wc-button-div">
-					<button className="btn btn-primary" id="articles-generate-button" onClick={this.generateWCFromSelected}>
-						<span className="glyphicon glyphicon-cloud"></span> Generate Word Cloud From Selected Articles
-					</button>
+					<IndexLink to='/'>
+						<button className="btn btn-primary" id="articles-generate-button" onClick={this.generateWCFromSelected.bind(this)}>
+							<span className="glyphicon glyphicon-cloud"></span> Generate Word Cloud From Selected Articles
+						</button>
+					</IndexLink>
 				</div>
 
 				{/*Download Buttons for List*/}
 				<div className="row" id="articles-dl-button-div">
-					<button className="btn btn-primary" id="articles-dl-pdf-button" onClick={this.listToPDF}>
+					<button className="btn btn-primary" id="articles-dl-pdf-button" onClick={this.listToPDF.bind(this)}>
 						<span className="glyphicon glyphicon-download"></span> Download List as PDF
 					</button>
-					<button className="btn btn-primary" id="articles-dl-txt-button" onClick={this.listToTXT}>
+					<button className="btn btn-primary" id="articles-dl-txt-button" onClick={this.listToTXT.bind(this)}>
 						<span className="glyphicon glyphicon-download"></span> Download List as TXT
 					</button>
 				</div>

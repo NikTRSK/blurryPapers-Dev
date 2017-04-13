@@ -1,6 +1,7 @@
 import React from 'react';
 import * as ReactBootstrap from 'react-bootstrap'
 import Highlight from 'react-highlighter';
+import {IndexLink} from 'react-router';
 import '../../../dev/styles/article-item.sass';
 
 export default class ArticleItem extends React.Component {
@@ -11,11 +12,6 @@ export default class ArticleItem extends React.Component {
 			showAbstract: false,
 	    checked: false
     };
-    this.openBibtex = this.openBibtex.bind(this);
-    this.closeBibtex = this.closeBibtex.bind(this);
-		this.openAbstract = this.openAbstract.bind(this);
-		this.closeAbstract = this.closeAbstract.bind(this);
-		this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 	openAbstract() {
 		this.props.fetchAbstract();
@@ -25,18 +21,32 @@ export default class ArticleItem extends React.Component {
 		this.props.clearAbstract();
 		this.setState({ showAbstract: false });
 	}
-  closeBibtex() {
-	  this.props.clearBibtex();
-    this.setState({ showModal: false });
-  }
   openBibtex() {
 	  this.props.fetchBibtex();
     this.setState({ showModal: true });
   }
+	closeBibtex() {
+		this.props.clearBibtex();
+		this.setState({ showModal: false });
+	}
 	handleCheckbox() {
 		const checked = this.state.checked;
 		this.setState({checked: !checked});
 		this.props.onChange(this.props.article.doi, !checked);
+	}
+	// TODO: Switch "Smith" with author
+	authorRoute(author) {
+		this.props.addToHistory("Smith", 5);
+		this.props.generatePapers("Smith");
+		//this.props.addToHistory(author, 5);
+		//this.props.generatePapers(author);
+	}
+	// TODO: Switch "Smith" with conference
+	conferenceRoute(conference) {
+		this.props.addToHistory("Smith", 5);
+		this.props.generatePapers("Smith");
+		//this.props.addToHistory(conference, 5);
+		//this.props.generatePapers(conference);
 	}
 
 	render() {
@@ -45,16 +55,16 @@ export default class ArticleItem extends React.Component {
 		const { abstract } = this.props.abstractData.abstract;
 		const { word } = this.props;
 		const mappedAuthors = authors.map((author, i) =>
-			<a href="#" key={i}>
+			<IndexLink to="/" key={i} onClick={this.authorRoute.bind(this,author)}>
 				{!!i && ", "}
 				{author}
-			</a>
+			</IndexLink>
 		);
 		const mappedConferences = conferences.map((conference, i) =>
-			<a href="#" key={i}>
+			<IndexLink to="/" key={i} onClick={this.conferenceRoute.bind(this,conference)}>
 				{!!i && ", "}
 				{conference}
-			</a>
+			</IndexLink>
 		);
 
 		return (
@@ -63,7 +73,7 @@ export default class ArticleItem extends React.Component {
 				{/* BibTeX popup */}
 				<div className="row">
 					<div>
-						<ReactBootstrap.Modal show={this.state.showModal} onHide={this.closeBibtex}>
+						<ReactBootstrap.Modal show={this.state.showModal} onHide={this.closeBibtex.bind(this)}>
 							<ReactBootstrap.Modal.Header closeButton>
 								<ReactBootstrap.Modal.Title>BibTeX</ReactBootstrap.Modal.Title>
 							</ReactBootstrap.Modal.Header>
@@ -77,7 +87,7 @@ export default class ArticleItem extends React.Component {
 				{/* BibTeX popup */}
 				<div className="row">
 					<div>
-						<ReactBootstrap.Modal show={this.state.showAbstract} onHide={this.closeAbstract}>
+						<ReactBootstrap.Modal show={this.state.showAbstract} onHide={this.closeAbstract.bind(this)}>
 							<ReactBootstrap.Modal.Header closeButton>
 								<ReactBootstrap.Modal.Title>Abstract</ReactBootstrap.Modal.Title>
 							</ReactBootstrap.Modal.Header>
@@ -100,19 +110,14 @@ export default class ArticleItem extends React.Component {
 					<table>
 						<tr>
 							<th className="article-checkbox-col">
-								<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
+								<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox.bind(this)}/>
 							</th>
 							<th className="article-title-col">
-								<a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
+								<a onClick={this.openAbstract.bind(this)}><p id="article-title">{title}</p></a>
 							</th>
 						</tr>
 					</table>
 				</div>
-
-	      {/*<input type="checkbox" ref={doi} value={this.state.checked} id="article-checkbox" onChange={this.handleCheckbox}/>
-	      <div id="test-div">
-		      <a onClick={this.openAbstract}><p id="article-title">{title}</p></a>
-	      </div>*/}
 
 	      {/* Word + Occurences */}
 	      <div className="row" id="article-authors-container">
@@ -136,7 +141,7 @@ export default class ArticleItem extends React.Component {
 
 				{/* Buttons */}
 				<div className="row" id="article-buttons-container">
-					<button className="btn btn-primary" id="article-bibtex-button" onClick={this.openBibtex}>
+					<button className="btn btn-primary" id="article-bibtex-button" onClick={this.openBibtex.bind(this)}>
 						<span className="glyphicon glyphicon-book"></span> BibTeX
 					</button>
 					<a target="_blank" href={downloadLink}>
