@@ -109,16 +109,21 @@ const seleniumTests = function () {
     });
 
     //selection.feature
-    this.Then(/^I expect to see a "([^"]*)" within a "([^"]*)"$/, (arg1, arg2, callback) => {
-        // let checkboxElement = $$("article-checkbox");
-        // if(checkboxElement.getValue() === "false"){
-        //     return;
-        // }
-        expect(null).to.not.equal(null); // TODO
+    this.Then(/^I expect to see a "([^"]*)" within a "([^"]*)"$/, (arg1, arg2) => { //check for checkbox
+        let articleDiv = $$("articles-article-list-div");
+        let noElements = "True";
+        for (let i = 0; i < articleDiv.length; ++i) {
+            if (articleDiv[i].getText() === "article-checkbox") {
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
     });
 
     //ui.feature
-    this.When(/^I am on the author page$/, (url) =>{
+    this.When(/^I am on the selected word page$/, (url) =>{
         if (browser.url(url) === "http://localhost:3000/paperlist/present"){
             return;
         }
@@ -128,19 +133,7 @@ const seleniumTests = function () {
         let articleDiv = $$("articles-article-list-div");
         let noElements = "True";
         for (let i = 0; i < articleDiv.length; ++i) {
-            if (articleDiv[i].getText() === "present") {
-                noElements = "False";
-            }
-        }
-        if(noElements === "False"){
-            return;
-        }
-    });
-    this.Then(/^I expect a list of Articles to display under the title$/,(element, text)=> {
-        let articleDiv = $$("articles-article-list-div");
-        let noElements = "True";
-        for (let i = 0; i < articleDiv.length; ++i) {
-            if (articleDiv[i].getText() === "present") {
+            if (articleDiv[i].getText() === "article-container") {
                 noElements = "False";
             }
         }
@@ -149,7 +142,20 @@ const seleniumTests = function () {
         }
     });
 
-  /* New stuff */
+    this.Then(/^I expect the article component to list the authors$/,(element, text)=> {
+        let articleDiv = $$("articles-article-list-div");
+        let noElements = "True";
+        for (let i = 0; i < articleDiv.length; ++i) {
+            if (articleDiv[i].getText() === "article-authors-container") { //searching for authors
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
+    });
+
+    /* New stuff */
   // download_button
   this.Then(/^I expect a download button "([^"]*)" with the text "([^"]*)" to not exist$/, (element, word) => {
     let downloadBtn = $(element);
