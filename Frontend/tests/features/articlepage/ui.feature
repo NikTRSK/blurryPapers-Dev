@@ -17,7 +17,7 @@ Feature: Article Item Components check
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
-    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    When I select a "present" from the "#word-cloud"
     When I am on the selected word page
     Then I expect the article component to list the authors
 
@@ -27,9 +27,9 @@ Feature: Article Item Components check
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
-    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    When I select a "present" from the "#word-cloud"
     When I am on the selected word page
-    Then I expect to see a button allowing me to view the article's BibTex
+    Then I expect to see a button allowing me to view the BibTeX
 
   #Test 5
   @javascript
@@ -37,6 +37,6 @@ Feature: Article Item Components check
     Given I am on the homepage "http://localhost:3000"
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
-    When I select a ".tag-cloud-tag" from the "#word-cloud"
+    When I select a "present" from the "#word-cloud"
     When I click on the Download button
-    Then I expect a Download window to pop up
+    Then I expect a tab to pop up

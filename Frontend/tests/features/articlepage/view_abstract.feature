@@ -8,6 +8,6 @@ Feature: Be able to view the abstract of an article
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
     When I select a "present" from the "#word-cloud"
-    When I am on the artist page
+    When I am on the selected word page
     When I click on the article title
-    Then I expect to see a popup containing the article's abstract
+    Then I expect to see a popup containing the abstract

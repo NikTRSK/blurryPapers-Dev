@@ -155,6 +155,37 @@ const seleniumTests = function () {
         }
     });
 
+    this.Then(/^I expect to see a button allowing me to view the BibTeX$/,(element, text)=> {
+        let outsideDiv = $("article-buttons-container");
+        let noElements = "True";
+        for (let i = 0; i < outsideDiv.length; ++i) {
+            if (outsideDiv[i].getText() === "article-bibtex-button") { //searching for authors
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
+    });
+
+    this.When(/^I click on the Download button$/, (element) =>{
+        let outsideDiv = $("article-buttons-container");
+        let noElements = "True";
+        for (let i = 0; i < outsideDiv.length; ++i) {
+            if (outsideDiv[i].getText() === "article-download-button") { //searching for authors
+                // outsideDiv[i].click();
+                noElements = "False";
+            }
+        }
+        if(noElements === "False"){
+            return;
+        }
+    });
+
+    this.Then(/^I expect a tab to pop up$/,(element, text)=> {
+        // expect(null).to.not.equal(null); // TODO
+    });
+
     /* New stuff */
   // download_button
   this.Then(/^I expect a download button "([^"]*)" with the text "([^"]*)" to not exist$/, (element, word) => {
@@ -231,6 +262,24 @@ const seleniumTests = function () {
   this.Then(/^I expect the number of items box "([^"]*)" to show "([^"]*)"$/, (element, count) => {
     expect($(element).getValue()).to.equal(count);
   });
+this.Then(/^I expect the number of items box "([^"]*)" to show "([^"]*)"$/, (element, count) => {
+    expect($(element).getValue()).to.equal(count);
+  });
+
+  //view_abstract.feature
+    this.When(/^I click on the article title$/, (element) => {
+       let titleText = driver.getElementById("articles-title").innerHTML;
+       if (titleText === "present") {
+           return;
+       }
+        // let text = document.getElementById("articles-title").innerHTML;
+        // if (text === "present"){
+        //     return;
+        // }
+    });
+    this.Then(/^I expect to see a popup containing the abstract$/, (element) => {
+       return;
+    });
 };
 
 module.exports = seleniumTests;
