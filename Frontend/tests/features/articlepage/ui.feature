@@ -8,7 +8,6 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
     When I select a "present" from the "#word-cloud"
-    When I am on the selected word page
     Then I expect a list of Articles to display under the title
 
   #Test 3
@@ -18,7 +17,6 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
     When I select a "present" from the "#word-cloud"
-    When I am on the selected word page
     Then I expect the article component to list the authors
 
   #Test 4
@@ -28,7 +26,6 @@ Feature: Article Item Components check
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
     When I select a "present" from the "#word-cloud"
-    When I am on the selected word page
     Then I expect to see a button allowing me to view the BibTeX
 
   #Test 5

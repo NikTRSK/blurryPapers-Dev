@@ -5,4 +5,4 @@ Feature: Search Loading
     Given I am on the homepage "http://localhost:3000/"
     When I enter "Smith" in the "#search-input-box"
     When The "#search-button" is clicked
-    Then I expect a progress bar "#progress-bar" to show me the progress
+    Then I expect a progress bar "#loading-bar" to show me the progress
