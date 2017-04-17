@@ -42,25 +42,32 @@ const seleniumTests = function () {
 
     // word_cloud.feature
     this.Then(/^There is not a "([^"]*)"$/, (element) => {
-        let wordCloud = $(element);
-        console.log(wordCloud.value.ELEMENT);
-        expect(wordCloud.value.ELEMENT).to.eq('0');
+        browser.pause(3000);
+        let wordcloud = $(element);
+        expect(wordcloud.state).to.equal("failure");
     });
 
     this.When(/^There is a wordcloud$/, function (callback) {
-        expect(null).to.equal(null);
+        browser.pause(5000);
         let inputBox = $("#search-input-box");
         inputBox.setValue("Smith");
 
         let searchBtn = $("#search-button");
         searchBtn.click();
+        expect(wordcloud.state).to.equal("success");
     });
 
     this.Then(/^There is a "([^"]*)"$/, (element) => {
-        // let wordCloud = $(element);
-        // console.log(wordCloud.value.ELEMENT);
-        // expect(wordCloud.value.ELEMENT).to.not.eq('0');
-        expect(null).to.equal(null);
+        let inputBox = $("#search-input-box");
+
+        browser.pause(10000);
+
+
+        let wordCloud = $(element);
+        // console.log($(element));
+        // expect(wordCloud.value.ELEMENT).to.not.eq('1');
+        expect(wordCloud.state).to.equal("success");
+
     });
 
     //download_image_button.feature
@@ -268,8 +275,8 @@ this.Then(/^I expect the number of items box "([^"]*)" to show "([^"]*)"$/, (ele
 
   //view_abstract.feature
     this.When(/^I click on the article title$/, (element) => {
-       let titleText = driver.getElementById("articles-title").innerHTML;
-       if (titleText === "present") {
+       let titleText = $("#articles-title");
+       if (titleText.getText() === "present") {
            return;
        }
         // let text = document.getElementById("articles-title").innerHTML;
