@@ -47,25 +47,16 @@ const seleniumTests = function () {
         expect(wordcloud.state).to.equal("failure");
     });
 
-    this.When(/^There is a wordcloud$/, function (callback) {
+    this.When(/^There is a wordcloud$/, (element)=> {
         browser.pause(5000);
-        let inputBox = $("#search-input-box");
-        inputBox.setValue("Smith");
-
-        let searchBtn = $("#search-button");
-        searchBtn.click();
+        let wordcloud = $(element);
         expect(wordcloud.state).to.equal("success");
     });
 
     this.Then(/^There is a "([^"]*)"$/, (element) => {
         let inputBox = $("#search-input-box");
-
-        browser.pause(10000);
-
-
+        browser.pause(5000);
         let wordCloud = $(element);
-        // console.log($(element));
-        // expect(wordCloud.value.ELEMENT).to.not.eq('1');
         expect(wordCloud.state).to.equal("success");
 
     });
@@ -275,15 +266,10 @@ this.Then(/^I expect the number of items box "([^"]*)" to show "([^"]*)"$/, (ele
 
   //view_abstract.feature
     this.When(/^I click on the article title$/, (element) => {
-       let titleText = $("#articles-title");
-       if (titleText.getText() === "present") {
-           return;
-       }
-        // let text = document.getElementById("articles-title").innerHTML;
-        // if (text === "present"){
-        //     return;
-        // }
+       let titleText = $("#articles-title-div");
+       expect(titleText.getInner .getText()).to.equal("present");
     });
+
     this.Then(/^I expect to see a popup containing the abstract$/, (element) => {
        return;
     });
